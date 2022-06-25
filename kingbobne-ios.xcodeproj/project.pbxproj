@@ -16,6 +16,10 @@
 		34E5D63A2866FD6D004E34EB /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 34E5D6392866FD6D004E34EB /* RxCocoa */; };
 		34E5D63C2866FD6D004E34EB /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 34E5D63B2866FD6D004E34EB /* RxRelay */; };
 		34E5D63E2866FD6D004E34EB /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 34E5D63D2866FD6D004E34EB /* RxSwift */; };
+		34E5D646286704DF004E34EB /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E5D645286704DF004E34EB /* UserProfile.swift */; };
+		34E5D648286704FF004E34EB /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E5D647286704FF004E34EB /* Post.swift */; };
+		34E5D64A28670506004E34EB /* SignRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E5D64928670506004E34EB /* SignRepository.swift */; };
+		34E5D64C28670510004E34EB /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E5D64B28670510004E34EB /* SplashViewController.swift */; };
 		CEB270C62866F7130021EC9B /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = CEB270C52866F7130021EC9B /* Lottie */; };
 		CEB270C92866F73C0021EC9B /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = CEB270C82866F73C0021EC9B /* Moya */; };
 		CEB270CB2866F73C0021EC9B /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = CEB270CA2866F73C0021EC9B /* RxMoya */; };
@@ -34,6 +38,10 @@
 		34D4CB8C2866F4B40083DDA9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		34D4CB8F2866F4B40083DDA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		34D4CB912866F4B40083DDA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		34E5D645286704DF004E34EB /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		34E5D647286704FF004E34EB /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		34E5D64928670506004E34EB /* SignRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignRepository.swift; sourceTree = "<group>"; };
+		34E5D64B28670510004E34EB /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +101,8 @@
 		34E5D6352866FAF7004E34EB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				34E5D6402867044B004E34EB /* Post */,
+				34E5D63F28670445004E34EB /* User */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -100,6 +110,7 @@
 		34E5D6362866FAFF004E34EB /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				34E5D64128670452004E34EB /* SignRepository */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -107,8 +118,49 @@
 		34E5D6372866FB05004E34EB /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				34E5D644286704A4004E34EB /* SignUp */,
+				34E5D6422867045F004E34EB /* Splash */,
 			);
 			path = Presentation;
+			sourceTree = "<group>";
+		};
+		34E5D63F28670445004E34EB /* User */ = {
+			isa = PBXGroup;
+			children = (
+				34E5D645286704DF004E34EB /* UserProfile.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		34E5D6402867044B004E34EB /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				34E5D647286704FF004E34EB /* Post.swift */,
+			);
+			path = Post;
+			sourceTree = "<group>";
+		};
+		34E5D64128670452004E34EB /* SignRepository */ = {
+			isa = PBXGroup;
+			children = (
+				34E5D64928670506004E34EB /* SignRepository.swift */,
+			);
+			path = SignRepository;
+			sourceTree = "<group>";
+		};
+		34E5D6422867045F004E34EB /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				34E5D64B28670510004E34EB /* SplashViewController.swift */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
+		34E5D644286704A4004E34EB /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SignUp;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -202,9 +254,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34E5D646286704DF004E34EB /* UserProfile.swift in Sources */,
 				34D4CB882866F4B10083DDA9 /* ViewController.swift in Sources */,
 				34D4CB842866F4B10083DDA9 /* AppDelegate.swift in Sources */,
 				34D4CB862866F4B10083DDA9 /* SceneDelegate.swift in Sources */,
+				34E5D64A28670506004E34EB /* SignRepository.swift in Sources */,
+				34E5D64C28670510004E34EB /* SplashViewController.swift in Sources */,
+				34E5D648286704FF004E34EB /* Post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
