@@ -13,6 +13,13 @@
 		34D4CB8B2866F4B10083DDA9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34D4CB892866F4B10083DDA9 /* Main.storyboard */; };
 		34D4CB8D2866F4B40083DDA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34D4CB8C2866F4B40083DDA9 /* Assets.xcassets */; };
 		34D4CB902866F4B40083DDA9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34D4CB8E2866F4B40083DDA9 /* LaunchScreen.storyboard */; };
+		CEB270C62866F7130021EC9B /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = CEB270C52866F7130021EC9B /* Lottie */; };
+		CEB270C92866F73C0021EC9B /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = CEB270C82866F73C0021EC9B /* Moya */; };
+		CEB270CB2866F73C0021EC9B /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = CEB270CA2866F73C0021EC9B /* RxMoya */; };
+		CEB270CE2866F7500021EC9B /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = CEB270CD2866F7500021EC9B /* Kingfisher */; };
+		CEB270D12866F7700021EC9B /* CropViewController in Frameworks */ = {isa = PBXBuildFile; productRef = CEB270D02866F7700021EC9B /* CropViewController */; };
+		CEB270D32866F7700021EC9B /* TOCropViewController in Frameworks */ = {isa = PBXBuildFile; productRef = CEB270D22866F7700021EC9B /* TOCropViewController */; };
+		CEB270D62866F7AA0021EC9B /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = CEB270D52866F7AA0021EC9B /* Then */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +38,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEB270CE2866F7500021EC9B /* Kingfisher in Frameworks */,
+				CEB270CB2866F73C0021EC9B /* RxMoya in Frameworks */,
+				CEB270C92866F73C0021EC9B /* Moya in Frameworks */,
+				CEB270D62866F7AA0021EC9B /* Then in Frameworks */,
+				CEB270D12866F7700021EC9B /* CropViewController in Frameworks */,
+				CEB270D32866F7700021EC9B /* TOCropViewController in Frameworks */,
+				CEB270C62866F7130021EC9B /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +97,15 @@
 			dependencies = (
 			);
 			name = "kingbobne-ios";
+			packageProductDependencies = (
+				CEB270C52866F7130021EC9B /* Lottie */,
+				CEB270C82866F73C0021EC9B /* Moya */,
+				CEB270CA2866F73C0021EC9B /* RxMoya */,
+				CEB270CD2866F7500021EC9B /* Kingfisher */,
+				CEB270D02866F7700021EC9B /* CropViewController */,
+				CEB270D22866F7700021EC9B /* TOCropViewController */,
+				CEB270D52866F7AA0021EC9B /* Then */,
+			);
 			productName = "kingbobne-ios";
 			productReference = 34D4CB802866F4B10083DDA9 /* kingbobne-ios.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +134,13 @@
 				Base,
 			);
 			mainGroup = 34D4CB772866F4B00083DDA9;
+			packageReferences = (
+				CEB270C42866F7130021EC9B /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				CEB270C72866F73C0021EC9B /* XCRemoteSwiftPackageReference "Moya" */,
+				CEB270CC2866F7500021EC9B /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				CEB270CF2866F7700021EC9B /* XCRemoteSwiftPackageReference "TOCropViewController" */,
+				CEB270D42866F7AA0021EC9B /* XCRemoteSwiftPackageReference "Then" */,
+			);
 			productRefGroup = 34D4CB812866F4B10083DDA9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -360,6 +390,87 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CEB270C42866F7130021EC9B /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/alexruperez/lottie-ios.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		CEB270C72866F73C0021EC9B /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		CEB270CC2866F7500021EC9B /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		CEB270CF2866F7700021EC9B /* XCRemoteSwiftPackageReference "TOCropViewController" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/TimOliver/TOCropViewController.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		CEB270D42866F7AA0021EC9B /* XCRemoteSwiftPackageReference "Then" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/Then.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CEB270C52866F7130021EC9B /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CEB270C42866F7130021EC9B /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+		CEB270C82866F73C0021EC9B /* Moya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CEB270C72866F73C0021EC9B /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
+		};
+		CEB270CA2866F73C0021EC9B /* RxMoya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CEB270C72866F73C0021EC9B /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = RxMoya;
+		};
+		CEB270CD2866F7500021EC9B /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CEB270CC2866F7500021EC9B /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		CEB270D02866F7700021EC9B /* CropViewController */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CEB270CF2866F7700021EC9B /* XCRemoteSwiftPackageReference "TOCropViewController" */;
+			productName = CropViewController;
+		};
+		CEB270D22866F7700021EC9B /* TOCropViewController */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CEB270CF2866F7700021EC9B /* XCRemoteSwiftPackageReference "TOCropViewController" */;
+			productName = TOCropViewController;
+		};
+		CEB270D52866F7AA0021EC9B /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CEB270D42866F7AA0021EC9B /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 34D4CB782866F4B00083DDA9 /* Project object */;
 }
