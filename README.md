@@ -46,3 +46,15 @@
 # Target Version
 - iOS 13
 - Swift Package Manager 
+
+# Code Review
+- [pn / dn rule](https://blog.banksalad.com/tech/banksalad-code-review-culture/)
+
+# Branch Strategy
+- branch merge strategy: [Squash and Merge](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/about-pull-request-merges#squash-and-merge-your-pull-request-commits)
+- [github flow](https://docs.github.com/en/get-started/quickstart/github-flow)
+- naming convention
+	- feature/{feature name}
+	- release/{release version}
+	- hotfix/{release version}
+
