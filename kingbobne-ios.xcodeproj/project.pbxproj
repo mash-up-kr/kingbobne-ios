@@ -13,6 +13,9 @@
 		34D4CB8B2866F4B10083DDA9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34D4CB892866F4B10083DDA9 /* Main.storyboard */; };
 		34D4CB8D2866F4B40083DDA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34D4CB8C2866F4B40083DDA9 /* Assets.xcassets */; };
 		34D4CB902866F4B40083DDA9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34D4CB8E2866F4B40083DDA9 /* LaunchScreen.storyboard */; };
+		34E5D63A2866FD6D004E34EB /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 34E5D6392866FD6D004E34EB /* RxCocoa */; };
+		34E5D63C2866FD6D004E34EB /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 34E5D63B2866FD6D004E34EB /* RxRelay */; };
+		34E5D63E2866FD6D004E34EB /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 34E5D63D2866FD6D004E34EB /* RxSwift */; };
 		CEB270C62866F7130021EC9B /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = CEB270C52866F7130021EC9B /* Lottie */; };
 		CEB270C92866F73C0021EC9B /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = CEB270C82866F73C0021EC9B /* Moya */; };
 		CEB270CB2866F73C0021EC9B /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = CEB270CA2866F73C0021EC9B /* RxMoya */; };
@@ -38,12 +41,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34E5D63C2866FD6D004E34EB /* RxRelay in Frameworks */,
 				CEB270CE2866F7500021EC9B /* Kingfisher in Frameworks */,
+				34E5D63E2866FD6D004E34EB /* RxSwift in Frameworks */,
 				CEB270CB2866F73C0021EC9B /* RxMoya in Frameworks */,
 				CEB270C92866F73C0021EC9B /* Moya in Frameworks */,
 				CEB270D62866F7AA0021EC9B /* Then in Frameworks */,
 				CEB270D12866F7700021EC9B /* CropViewController in Frameworks */,
 				CEB270D32866F7700021EC9B /* TOCropViewController in Frameworks */,
+				34E5D63A2866FD6D004E34EB /* RxCocoa in Frameworks */,
 				CEB270C62866F7130021EC9B /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -70,6 +76,9 @@
 		34D4CB822866F4B10083DDA9 /* kingbobne-ios */ = {
 			isa = PBXGroup;
 			children = (
+				34E5D6372866FB05004E34EB /* Presentation */,
+				34E5D6362866FAFF004E34EB /* Repository */,
+				34E5D6352866FAF7004E34EB /* Model */,
 				34D4CB832866F4B10083DDA9 /* AppDelegate.swift */,
 				34D4CB852866F4B10083DDA9 /* SceneDelegate.swift */,
 				34D4CB872866F4B10083DDA9 /* ViewController.swift */,
@@ -79,6 +88,27 @@
 				34D4CB912866F4B40083DDA9 /* Info.plist */,
 			);
 			path = "kingbobne-ios";
+			sourceTree = "<group>";
+		};
+		34E5D6352866FAF7004E34EB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		34E5D6362866FAFF004E34EB /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		34E5D6372866FB05004E34EB /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presentation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -105,6 +135,9 @@
 				CEB270D02866F7700021EC9B /* CropViewController */,
 				CEB270D22866F7700021EC9B /* TOCropViewController */,
 				CEB270D52866F7AA0021EC9B /* Then */,
+				34E5D6392866FD6D004E34EB /* RxCocoa */,
+				34E5D63B2866FD6D004E34EB /* RxRelay */,
+				34E5D63D2866FD6D004E34EB /* RxSwift */,
 			);
 			productName = "kingbobne-ios";
 			productReference = 34D4CB802866F4B10083DDA9 /* kingbobne-ios.app */;
@@ -140,6 +173,7 @@
 				CEB270CC2866F7500021EC9B /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				CEB270CF2866F7700021EC9B /* XCRemoteSwiftPackageReference "TOCropViewController" */,
 				CEB270D42866F7AA0021EC9B /* XCRemoteSwiftPackageReference "Then" */,
+				34E5D6382866FD6D004E34EB /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			productRefGroup = 34D4CB812866F4B10083DDA9 /* Products */;
 			projectDirPath = "";
@@ -392,6 +426,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		34E5D6382866FD6D004E34EB /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
 		CEB270C42866F7130021EC9B /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/alexruperez/lottie-ios.git";
@@ -435,6 +477,21 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		34E5D6392866FD6D004E34EB /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 34E5D6382866FD6D004E34EB /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		34E5D63B2866FD6D004E34EB /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 34E5D6382866FD6D004E34EB /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		34E5D63D2866FD6D004E34EB /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 34E5D6382866FD6D004E34EB /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
 		CEB270C52866F7130021EC9B /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CEB270C42866F7130021EC9B /* XCRemoteSwiftPackageReference "lottie-ios" */;
