@@ -12,7 +12,7 @@ protocol SignRepository {
 }
 
 class SignRepositoryCompanion {
-    static func newInstance(authService: AuthService = AuthServiceCompanion.newInstance()) -> SignRepository {
+    static func newInstance(authService: AuthService = AuthCompanion.newInstance()) -> SignRepository {
         return SignRepositoryImpl(authService: authService)
     }
 }
