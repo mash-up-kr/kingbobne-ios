@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3452A63E28675D6000347CFA /* Networkable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3452A63D28675D6000347CFA /* Networkable.swift */; };
+		3452A6442867602500347CFA /* BaseUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3452A6432867602500347CFA /* BaseUrl.swift */; };
+		3452A6462867639800347CFA /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3452A6452867639800347CFA /* Service.swift */; };
+		3452A6492867644100347CFA /* RespAccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3452A6482867644100347CFA /* RespAccessToken.swift */; };
 		34D4CB842866F4B10083DDA9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D4CB832866F4B10083DDA9 /* AppDelegate.swift */; };
 		34D4CB862866F4B10083DDA9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D4CB852866F4B10083DDA9 /* SceneDelegate.swift */; };
 		34D4CB882866F4B10083DDA9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D4CB872866F4B10083DDA9 /* ViewController.swift */; };
@@ -20,6 +24,8 @@
 		34E5D648286704FF004E34EB /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E5D647286704FF004E34EB /* Post.swift */; };
 		34E5D64A28670506004E34EB /* SignRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E5D64928670506004E34EB /* SignRepository.swift */; };
 		34E5D64C28670510004E34EB /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E5D64B28670510004E34EB /* SplashViewController.swift */; };
+		34E5D64F28674708004E34EB /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E5D64E28674708004E34EB /* AuthService.swift */; };
+		34E5D65428675748004E34EB /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E5D65328675748004E34EB /* AccessToken.swift */; };
 		CEB270C62866F7130021EC9B /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = CEB270C52866F7130021EC9B /* Lottie */; };
 		CEB270C92866F73C0021EC9B /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = CEB270C82866F73C0021EC9B /* Moya */; };
 		CEB270CB2866F73C0021EC9B /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = CEB270CA2866F73C0021EC9B /* RxMoya */; };
@@ -30,6 +36,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3452A63D28675D6000347CFA /* Networkable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networkable.swift; sourceTree = "<group>"; };
+		3452A6432867602500347CFA /* BaseUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUrl.swift; sourceTree = "<group>"; };
+		3452A6452867639800347CFA /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		3452A6482867644100347CFA /* RespAccessToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RespAccessToken.swift; sourceTree = "<group>"; };
 		34D4CB802866F4B10083DDA9 /* kingbobne-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "kingbobne-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		34D4CB832866F4B10083DDA9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		34D4CB852866F4B10083DDA9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -42,6 +52,8 @@
 		34E5D647286704FF004E34EB /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		34E5D64928670506004E34EB /* SignRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignRepository.swift; sourceTree = "<group>"; };
 		34E5D64B28670510004E34EB /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		34E5D64E28674708004E34EB /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		34E5D65328675748004E34EB /* AccessToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessToken.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +77,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3452A647286763B300347CFA /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				34E5D64E28674708004E34EB /* AuthService.swift */,
+				3452A6482867644100347CFA /* RespAccessToken.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
 		34D4CB772866F4B00083DDA9 = {
 			isa = PBXGroup;
 			children = (
@@ -84,6 +105,7 @@
 		34D4CB822866F4B10083DDA9 /* kingbobne-ios */ = {
 			isa = PBXGroup;
 			children = (
+				34E5D64D286746F8004E34EB /* Data */,
 				34E5D6372866FB05004E34EB /* Presentation */,
 				34E5D6362866FAFF004E34EB /* Repository */,
 				34E5D6352866FAF7004E34EB /* Model */,
@@ -101,6 +123,7 @@
 		34E5D6352866FAF7004E34EB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				34E5D6522867573B004E34EB /* Auth */,
 				34E5D6402867044B004E34EB /* Post */,
 				34E5D63F28670445004E34EB /* User */,
 			);
@@ -161,6 +184,25 @@
 			children = (
 			);
 			path = SignUp;
+			sourceTree = "<group>";
+		};
+		34E5D64D286746F8004E34EB /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				3452A647286763B300347CFA /* Auth */,
+				3452A63D28675D6000347CFA /* Networkable.swift */,
+				3452A6432867602500347CFA /* BaseUrl.swift */,
+				3452A6452867639800347CFA /* Service.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		34E5D6522867573B004E34EB /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				34E5D65328675748004E34EB /* AccessToken.swift */,
+			);
+			path = Auth;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,11 +298,17 @@
 			files = (
 				34E5D646286704DF004E34EB /* UserProfile.swift in Sources */,
 				34D4CB882866F4B10083DDA9 /* ViewController.swift in Sources */,
+				34E5D65428675748004E34EB /* AccessToken.swift in Sources */,
 				34D4CB842866F4B10083DDA9 /* AppDelegate.swift in Sources */,
 				34D4CB862866F4B10083DDA9 /* SceneDelegate.swift in Sources */,
+				3452A6462867639800347CFA /* Service.swift in Sources */,
 				34E5D64A28670506004E34EB /* SignRepository.swift in Sources */,
 				34E5D64C28670510004E34EB /* SplashViewController.swift in Sources */,
 				34E5D648286704FF004E34EB /* Post.swift in Sources */,
+				3452A63E28675D6000347CFA /* Networkable.swift in Sources */,
+				3452A6442867602500347CFA /* BaseUrl.swift in Sources */,
+				3452A6492867644100347CFA /* RespAccessToken.swift in Sources */,
+				34E5D64F28674708004E34EB /* AuthService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
