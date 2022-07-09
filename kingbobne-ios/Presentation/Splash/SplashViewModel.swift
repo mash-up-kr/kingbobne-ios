@@ -15,18 +15,31 @@ protocol SplashViewModel {
 class SplashViewModelCompanion {
     static func newInstance() -> SplashViewModel {
         let myProfileRepository = MyProfileRepositoryCompanion.getInstance()
-        return SplashViewModelImpl(myProfileRepository: myProfileRepository)
+        let signRepository = SignRepositoryCompanion.getInstance()
+        return SplashViewModelImpl(
+            signRepository: signRepository,
+            myProfileRepository: myProfileRepository
+        )
     }
 }
 
 class SplashViewModelImpl : SplashViewModel {
-    private let myProfileRepository: MyProfileRepository
     private let stateSubject = PublishSubject<SplashState>()
     
     private let disposeBag: DisposeBag = DisposeBag()
     
-    init(myProfileRepository: MyProfileRepository) {
-        self.myProfileRepository = myProfileRepository
+    init(
+        signRepository: SignRepository,
+        myProfileRepository: MyProfileRepository
+    ) {
+        signRepository.sample()
+            .subscribe(on: ConcurrentDispatchQueueScheduler(qos: .background))
+            .subscribe(
+                onSuccess: { images in
+                    print(images)
+                }
+            )
+            .disposed(by: disposeBag)
         
         myProfileRepository.fetchMyProfile()
             .subscribe(on: ConcurrentDispatchQueueScheduler(qos: .background))

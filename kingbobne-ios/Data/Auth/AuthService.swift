@@ -7,10 +7,13 @@
 
 import Foundation
 import Moya
+import RxMoya
+import RxSwift
 
 internal enum AuthApi {
     case getToken(email: String, password: String)
     case refreshToken(refreshToken: String)
+    case sample
 }
 
 extension AuthApi : TargetType {
@@ -22,12 +25,14 @@ extension AuthApi : TargetType {
         switch self {
         case .getToken: return "/token"
         case .refreshToken: return "/refresh-token"
+        case .sample: return "/"
         }
     }
     public var method: Moya.Method {
         switch self {
         case .getToken: return Moya.Method.post
         case .refreshToken: return Moya.Method.post
+        case .sample: return Moya.Method.get
         }
     }
     
@@ -41,8 +46,9 @@ extension AuthApi : TargetType {
 }
 
 protocol AuthService: Service {
-    func getToken(email: String, password: String, completion: @escaping (Result<AccessToken, Error>) -> ())
-    func refreshToken(refreshToken: String, completion: @escaping (Result<AccessToken, Error>) -> ())
+    func sample() -> Single<Array<ImageData>>
+    func getToken(email: String, password: String) -> Single<AccessToken>
+    func refreshToken(refreshToken: String) -> Single<AccessToken>
 }
 
 class AuthCompanion {
@@ -52,40 +58,44 @@ class AuthCompanion {
 }
 
 fileprivate class AuthServiceImpl: AuthService, Networkable {
+    
+    
     var provider: MoyaProvider<AuthApi> = MoyaProvider<AuthApi>()
     
-    func getToken(email: String, password: String, completion: @escaping (Result<AccessToken, Error>) -> ()) {
-        provider.request(.getToken(email: email, password: password)) { result in
-            switch result {
-            case let .success(moyaResponse):
+    func sample() -> Single<Array<ImageData>> {
+        return provider.rx.request(.sample)
+            .flatMap { response in
                 do {
-                    let token = try moyaResponse.convert()
-                    completion(Result.success(token))
-                } catch {
-                    completion(Result.failure(error))
+                    let dto = try response.map(Array<RespImage>.self)
+                    return Single.just(dto.map { $0.convert() })
+                } catch { 
+                    return Single.error(error)
                 }
-            case let .failure(moyaError):
-                // do nothing
-                completion(Result.failure(moyaError))
             }
-        }
     }
     
-    func refreshToken(refreshToken: String, completion: @escaping (Result<AccessToken, Error>) -> ()) {
-        provider.request(.refreshToken(refreshToken: refreshToken)) { result in
-            switch result {
-            case let .success(moyaResponse):
+    func getToken(email: String, password: String) -> Single<AccessToken> {
+        return provider.rx.request(.getToken(email: email, password: password))
+            .flatMap { response in
                 do {
-                    let token = try moyaResponse.convert()
-                    completion(Result.success(token))
+                    let accessToken = try response.convert()
+                    return Single.just(accessToken)
                 } catch {
-                    completion(Result.failure(error))
+                    return Single.error(error)
                 }
-            case let .failure(moyaError):
-                // do nothing
-                completion(Result.failure(moyaError))
             }
-        }
+    }
+    
+    func refreshToken(refreshToken: String) -> Single<AccessToken> {
+        return provider.rx.request(.refreshToken(refreshToken: refreshToken))
+            .flatMap { response in
+                do {
+                    let accessToken = try response.convert()
+                    return Single.just(accessToken)
+                } catch {
+                    return Single.error(error)
+                }
+            }
     }
 }
 
@@ -101,4 +111,24 @@ fileprivate extension RespAccessToken {
         let expiredAt = Date().addingTimeInterval(Double(expiresIn))
         return AccessToken(token: token, expiredAt: expiredAt, refreshToken: refreshToken)
     }
+}
+
+struct RespImage: Codable, Identifiable {
+    let id: String
+    let author: String
+    let width: Int
+    let height: Int
+    let url: String
+    
+    func convert() -> ImageData {
+        return ImageData(id: id, author: author, width: width, height: height, url: url)
+    }
+}
+
+struct ImageData: Identifiable {
+    let id: String
+    let author: String
+    let width: Int
+    let height: Int
+    let url: String
 }

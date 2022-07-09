@@ -6,9 +6,10 @@
 //
 
 import Foundation
+import RxSwift
 
 protocol SignRepository {
-    
+    func sample() -> Single<Array<ImageData>>
 }
 
 class SignRepositoryCompanion {
@@ -24,6 +25,10 @@ class SignRepositoryImpl: SignRepository {
     
     init(authService: AuthService) {
         self.authService = authService
+    }
+    
+    func sample() -> Single<Array<ImageData>> {
+        return authService.sample()
     }
     
 }

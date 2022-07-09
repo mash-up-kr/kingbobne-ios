@@ -8,7 +8,7 @@
 import Foundation
 
 class BaseUrl {
-    static let value: URL = URL(string: "")!
+    static let value: URL = URL(string: "https://picsum.photos/v2/list")!
     
     private init() { }
 }
