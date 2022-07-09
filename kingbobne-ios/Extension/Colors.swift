@@ -23,5 +23,6 @@ extension UIColor {
         public static let brandYellow = UIColor(named: "brandYellow")!
         public static let shadow1 = UIColor(named: "Shadow1")!
         public static let shadow2 = UIColor(named: "Shadow2")!
+        public static let redError = UIColor(named: "RedError")!
     }
 }

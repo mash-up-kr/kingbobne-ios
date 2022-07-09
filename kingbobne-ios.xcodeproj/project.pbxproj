@@ -26,8 +26,8 @@
 		34E5D64C28670510004E34EB /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E5D64B28670510004E34EB /* SplashViewController.swift */; };
 		34E5D64F28674708004E34EB /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E5D64E28674708004E34EB /* AuthService.swift */; };
 		34E5D65428675748004E34EB /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E5D65328675748004E34EB /* AccessToken.swift */; };
-		CE51D842287966110021316B /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE51D841287966110021316B /* Login.storyboard */; };
-		CE51D844287966610021316B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE51D843287966610021316B /* LoginViewController.swift */; };
+		CE51D842287966110021316B /* Sign.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE51D841287966110021316B /* Sign.storyboard */; };
+		CE51D844287966610021316B /* SignViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE51D843287966610021316B /* SignViewController.swift */; };
 		CE51D84A28798A900021316B /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE51D84928798A900021316B /* ButtonStyle.swift */; };
 		CE51D84D28798F0C0021316B /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE51D84C28798F0C0021316B /* Colors.swift */; };
 		CE51D871287999420021316B /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = CE51D85E287999420021316B /* Pretendard-Regular.otf */; };
@@ -36,6 +36,12 @@
 		CE51D87C28799A520021316B /* Campton-BoldDEMO.otf in Resources */ = {isa = PBXBuildFile; fileRef = CE51D87A28799A520021316B /* Campton-BoldDEMO.otf */; };
 		CE51D87D28799A520021316B /* Campton-LightDEMO.otf in Resources */ = {isa = PBXBuildFile; fileRef = CE51D87B28799A520021316B /* Campton-LightDEMO.otf */; };
 		CE51D87F28799B3E0021316B /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE51D87E28799B3E0021316B /* Fonts.swift */; };
+		CE77CF552879D3FB0091E62C /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE77CF542879D3FB0091E62C /* SignInViewController.swift */; };
+		CE77CF572879D40D0091E62C /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE77CF562879D40D0091E62C /* SignIn.storyboard */; };
+		CE77CF5B2879F6E30091E62C /* Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE77CF5A2879F6E30091E62C /* Icons.swift */; };
+		CE77CF5E2879FC900091E62C /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE77CF5D2879FC900091E62C /* Home.storyboard */; };
+		CE77CF602879FC9A0091E62C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE77CF5F2879FC9A0091E62C /* HomeViewController.swift */; };
+		CE77CF622879FD220091E62C /* Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE77CF612879FD220091E62C /* Window.swift */; };
 		CEB270C62866F7130021EC9B /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = CEB270C52866F7130021EC9B /* Lottie */; };
 		CEB270C92866F73C0021EC9B /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = CEB270C82866F73C0021EC9B /* Moya */; };
 		CEB270CB2866F73C0021EC9B /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = CEB270CA2866F73C0021EC9B /* RxMoya */; };
@@ -64,8 +70,8 @@
 		34E5D64B28670510004E34EB /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		34E5D64E28674708004E34EB /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		34E5D65328675748004E34EB /* AccessToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessToken.swift; sourceTree = "<group>"; };
-		CE51D841287966110021316B /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
-		CE51D843287966610021316B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		CE51D841287966110021316B /* Sign.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Sign.storyboard; sourceTree = "<group>"; };
+		CE51D843287966610021316B /* SignViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignViewController.swift; sourceTree = "<group>"; };
 		CE51D84928798A900021316B /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
 		CE51D84C28798F0C0021316B /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		CE51D85E287999420021316B /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
@@ -74,6 +80,12 @@
 		CE51D87A28799A520021316B /* Campton-BoldDEMO.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Campton-BoldDEMO.otf"; sourceTree = "<group>"; };
 		CE51D87B28799A520021316B /* Campton-LightDEMO.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Campton-LightDEMO.otf"; sourceTree = "<group>"; };
 		CE51D87E28799B3E0021316B /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		CE77CF542879D3FB0091E62C /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		CE77CF562879D40D0091E62C /* SignIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
+		CE77CF5A2879F6E30091E62C /* Icons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icons.swift; sourceTree = "<group>"; };
+		CE77CF5D2879FC900091E62C /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		CE77CF5F2879FC9A0091E62C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		CE77CF612879FD220091E62C /* Window.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Window.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,7 +176,9 @@
 		34E5D6372866FB05004E34EB /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				CE51D840287965EE0021316B /* Login */,
+				CE77CF5C2879FC7F0091E62C /* Home */,
+				CE77CF532879D3E00091E62C /* SignIn */,
+				CE51D840287965EE0021316B /* Sign */,
 				34E5D644286704A4004E34EB /* SignUp */,
 				34E5D6422867045F004E34EB /* Splash */,
 			);
@@ -229,13 +243,13 @@
 			path = Auth;
 			sourceTree = "<group>";
 		};
-		CE51D840287965EE0021316B /* Login */ = {
+		CE51D840287965EE0021316B /* Sign */ = {
 			isa = PBXGroup;
 			children = (
-				CE51D841287966110021316B /* Login.storyboard */,
-				CE51D843287966610021316B /* LoginViewController.swift */,
+				CE51D841287966110021316B /* Sign.storyboard */,
+				CE51D843287966610021316B /* SignViewController.swift */,
 			);
-			path = Login;
+			path = Sign;
 			sourceTree = "<group>";
 		};
 		CE51D846287976570021316B /* Extension */ = {
@@ -243,6 +257,8 @@
 			children = (
 				CE51D84C28798F0C0021316B /* Colors.swift */,
 				CE51D87E28799B3E0021316B /* Fonts.swift */,
+				CE77CF5A2879F6E30091E62C /* Icons.swift */,
+				CE77CF612879FD220091E62C /* Window.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -265,6 +281,24 @@
 				CE51D863287999420021316B /* Pretendard-Bold.otf */,
 			);
 			path = Font;
+			sourceTree = "<group>";
+		};
+		CE77CF532879D3E00091E62C /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+				CE77CF542879D3FB0091E62C /* SignInViewController.swift */,
+				CE77CF562879D40D0091E62C /* SignIn.storyboard */,
+			);
+			path = SignIn;
+			sourceTree = "<group>";
+		};
+		CE77CF5C2879FC7F0091E62C /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				CE77CF5D2879FC900091E62C /* Home.storyboard */,
+				CE77CF5F2879FC9A0091E62C /* HomeViewController.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -346,11 +380,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE51D876287999420021316B /* Pretendard-Bold.otf in Resources */,
+				CE77CF5E2879FC900091E62C /* Home.storyboard in Resources */,
 				CE51D873287999420021316B /* Pretendard-Medium.otf in Resources */,
 				CE51D87C28799A520021316B /* Campton-BoldDEMO.otf in Resources */,
-				CE51D842287966110021316B /* Login.storyboard in Resources */,
+				CE51D842287966110021316B /* Sign.storyboard in Resources */,
 				CE51D871287999420021316B /* Pretendard-Regular.otf in Resources */,
 				CE51D87D28799A520021316B /* Campton-LightDEMO.otf in Resources */,
+				CE77CF572879D40D0091E62C /* SignIn.storyboard in Resources */,
 				34D4CB902866F4B40083DDA9 /* LaunchScreen.storyboard in Resources */,
 				34D4CB8D2866F4B40083DDA9 /* Assets.xcassets in Resources */,
 				34D4CB8B2866F4B10083DDA9 /* Main.storyboard in Resources */,
@@ -365,7 +401,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE51D84A28798A900021316B /* ButtonStyle.swift in Sources */,
-				CE51D844287966610021316B /* LoginViewController.swift in Sources */,
+				CE51D844287966610021316B /* SignViewController.swift in Sources */,
+				CE77CF622879FD220091E62C /* Window.swift in Sources */,
 				34E5D646286704DF004E34EB /* UserProfile.swift in Sources */,
 				34D4CB882866F4B10083DDA9 /* ViewController.swift in Sources */,
 				34E5D65428675748004E34EB /* AccessToken.swift in Sources */,
@@ -378,7 +415,10 @@
 				34E5D64C28670510004E34EB /* SplashViewController.swift in Sources */,
 				34E5D648286704FF004E34EB /* Post.swift in Sources */,
 				3452A63E28675D6000347CFA /* Networkable.swift in Sources */,
+				CE77CF552879D3FB0091E62C /* SignInViewController.swift in Sources */,
+				CE77CF602879FC9A0091E62C /* HomeViewController.swift in Sources */,
 				3452A6442867602500347CFA /* BaseUrl.swift in Sources */,
+				CE77CF5B2879F6E30091E62C /* Icons.swift in Sources */,
 				3452A6492867644100347CFA /* RespAccessToken.swift in Sources */,
 				34E5D64F28674708004E34EB /* AuthService.swift in Sources */,
 			);

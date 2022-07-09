@@ -37,7 +37,7 @@ extension UIFont {
         case .Body2Bold:
             return UIFont(name: "Pretendard-Bold", size: 14)!
         case .Body2Regular:
-            return UIFont(name: "Pretendard-Bold", size: 14)!
+            return UIFont(name: "Pretendard-Regular", size: 14)!
         case .Body3Medium:
             return UIFont(name: "Pretendard-Medium", size: 15)!
         case .CaptionBold:

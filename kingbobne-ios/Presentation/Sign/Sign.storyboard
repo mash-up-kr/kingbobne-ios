@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="izZ-kX-RvT">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -9,16 +9,16 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Login View Controller-->
+        <!--Sign View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController storyboardIdentifier="LoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="LoginViewController" customModule="kingbobne_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="SignViewController" customModule="kingbobne_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zYA-eo-zFW">
-                                <rect key="frame" x="0.0" y="138" width="414" height="303"/>
+                                <rect key="frame" x="0.0" y="182" width="414" height="303"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2It-d2-i6j">
                                         <rect key="frame" x="186" y="0.0" width="42" height="21"/>
@@ -73,7 +73,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                 <connections>
-                                    <action selector="onLogin:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="gZo-0x-NK4"/>
+                                    <action selector="onSignIn:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Nrr-2C-lgt"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -91,15 +91,34 @@
                             <constraint firstItem="zYA-eo-zFW" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="zrS-Si-vLI"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="2K8-43-Mvg"/>
                     <connections>
                         <outlet property="dishImgView" destination="NJ4-bu-Lb4" id="wwy-gK-GJA"/>
-                        <outlet property="loginButton" destination="eyy-pq-TR5" id="Rf4-bE-ygI"/>
+                        <outlet property="signInButton" destination="eyy-pq-TR5" id="Yey-5k-Cc8"/>
                         <outlet property="signUpButton" destination="lRt-3s-ZQ6" id="PuE-Ye-GkG"/>
                         <outlet property="subTitleLabel" destination="VUh-TZ-uu1" id="pKO-Og-wGt"/>
                         <outlet property="titleLabel" destination="2It-d2-i6j" id="BU2-zw-xys"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="928.98550724637687" y="78.348214285714278"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="JuI-HM-LNR">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="izZ-kX-RvT" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="H0M-Ei-NJS">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="dJd-Um-a46"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="icU-T0-zOT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="18.840579710144929" y="78.348214285714278"/>
         </scene>
