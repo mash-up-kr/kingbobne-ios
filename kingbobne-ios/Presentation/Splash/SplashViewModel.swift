@@ -14,7 +14,7 @@ protocol SplashViewModel {
 
 class SplashViewModelCompanion {
     static func newInstance() -> SplashViewModel {
-        let myProfileRepository = MyProfileRepositoryCompanion.newInstance()
+        let myProfileRepository = MyProfileRepositoryCompanion.getInstance()
         return SplashViewModelImpl(myProfileRepository: myProfileRepository)
     }
 }

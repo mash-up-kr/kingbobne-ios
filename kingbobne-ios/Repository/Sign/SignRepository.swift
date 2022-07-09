@@ -12,7 +12,8 @@ protocol SignRepository {
 }
 
 class SignRepositoryCompanion {
-    static let instance = SignRepositoryImpl(authService: AuthService = AuthCompanion.newInstance())
+    static let instance = SignRepositoryImpl(authService: AuthCompanion.newInstance())
+    private init() { }
     static func getInstance() -> SignRepository {
         return instance
     }
