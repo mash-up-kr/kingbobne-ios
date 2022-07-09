@@ -9,4 +9,6 @@ import Foundation
 
 struct UserProfile: Identifiable {
     let id: String
+    
+    static let EMPTY = UserProfile(id:"")
 }

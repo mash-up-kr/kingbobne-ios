@@ -26,6 +26,10 @@
 		34E5D64C28670510004E34EB /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E5D64B28670510004E34EB /* SplashViewController.swift */; };
 		34E5D64F28674708004E34EB /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E5D64E28674708004E34EB /* AuthService.swift */; };
 		34E5D65428675748004E34EB /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E5D65328675748004E34EB /* AccessToken.swift */; };
+		BD41CA682879752F00C0F149 /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD41CA672879752F00C0F149 /* SplashViewModel.swift */; };
+		BD41CA6B287976C600C0F149 /* MyProfileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD41CA6A287976C600C0F149 /* MyProfileRepository.swift */; };
+		BD41CA6D2879783600C0F149 /* SplashState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD41CA6C2879783600C0F149 /* SplashState.swift */; };
+		BD41CA7528799A3D00C0F149 /* RxExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD41CA7428799A3D00C0F149 /* RxExtensions.swift */; };
 		CEB270C62866F7130021EC9B /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = CEB270C52866F7130021EC9B /* Lottie */; };
 		CEB270C92866F73C0021EC9B /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = CEB270C82866F73C0021EC9B /* Moya */; };
 		CEB270CB2866F73C0021EC9B /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = CEB270CA2866F73C0021EC9B /* RxMoya */; };
@@ -54,6 +58,10 @@
 		34E5D64B28670510004E34EB /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		34E5D64E28674708004E34EB /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		34E5D65328675748004E34EB /* AccessToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessToken.swift; sourceTree = "<group>"; };
+		BD41CA672879752F00C0F149 /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
+		BD41CA6A287976C600C0F149 /* MyProfileRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileRepository.swift; sourceTree = "<group>"; };
+		BD41CA6C2879783600C0F149 /* SplashState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashState.swift; sourceTree = "<group>"; };
+		BD41CA7428799A3D00C0F149 /* RxExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,7 +141,8 @@
 		34E5D6362866FAFF004E34EB /* Repository */ = {
 			isa = PBXGroup;
 			children = (
-				34E5D64128670452004E34EB /* SignRepository */,
+				BD41CA69287976BF00C0F149 /* Me */,
+				34E5D64128670452004E34EB /* Sign */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -143,6 +152,7 @@
 			children = (
 				34E5D644286704A4004E34EB /* SignUp */,
 				34E5D6422867045F004E34EB /* Splash */,
+				BD41CA7428799A3D00C0F149 /* RxExtensions.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -163,18 +173,20 @@
 			path = Post;
 			sourceTree = "<group>";
 		};
-		34E5D64128670452004E34EB /* SignRepository */ = {
+		34E5D64128670452004E34EB /* Sign */ = {
 			isa = PBXGroup;
 			children = (
 				34E5D64928670506004E34EB /* SignRepository.swift */,
 			);
-			path = SignRepository;
+			path = Sign;
 			sourceTree = "<group>";
 		};
 		34E5D6422867045F004E34EB /* Splash */ = {
 			isa = PBXGroup;
 			children = (
 				34E5D64B28670510004E34EB /* SplashViewController.swift */,
+				BD41CA672879752F00C0F149 /* SplashViewModel.swift */,
+				BD41CA6C2879783600C0F149 /* SplashState.swift */,
 			);
 			path = Splash;
 			sourceTree = "<group>";
@@ -203,6 +215,14 @@
 				34E5D65328675748004E34EB /* AccessToken.swift */,
 			);
 			path = Auth;
+			sourceTree = "<group>";
+		};
+		BD41CA69287976BF00C0F149 /* Me */ = {
+			isa = PBXGroup;
+			children = (
+				BD41CA6A287976C600C0F149 /* MyProfileRepository.swift */,
+			);
+			path = Me;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -297,12 +317,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				34E5D646286704DF004E34EB /* UserProfile.swift in Sources */,
+				BD41CA7528799A3D00C0F149 /* RxExtensions.swift in Sources */,
 				34D4CB882866F4B10083DDA9 /* ViewController.swift in Sources */,
 				34E5D65428675748004E34EB /* AccessToken.swift in Sources */,
 				34D4CB842866F4B10083DDA9 /* AppDelegate.swift in Sources */,
 				34D4CB862866F4B10083DDA9 /* SceneDelegate.swift in Sources */,
 				3452A6462867639800347CFA /* Service.swift in Sources */,
 				34E5D64A28670506004E34EB /* SignRepository.swift in Sources */,
+				BD41CA682879752F00C0F149 /* SplashViewModel.swift in Sources */,
+				BD41CA6D2879783600C0F149 /* SplashState.swift in Sources */,
+				BD41CA6B287976C600C0F149 /* MyProfileRepository.swift in Sources */,
 				34E5D64C28670510004E34EB /* SplashViewController.swift in Sources */,
 				34E5D648286704FF004E34EB /* Post.swift in Sources */,
 				3452A63E28675D6000347CFA /* Networkable.swift in Sources */,
@@ -453,8 +477,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9R2N96NF47;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "kingbobne-ios/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -469,8 +495,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.kingbobne.kingbobne-ios";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kingbobne;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -482,8 +509,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9R2N96NF47;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "kingbobne-ios/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -498,8 +527,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.kingbobne.kingbobne-ios";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kingbobne;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
