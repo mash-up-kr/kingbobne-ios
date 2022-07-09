@@ -4,7 +4,6 @@
 //
 //  Created by 강대규 on 2022/06/25.
 //
-import RxSwift
 
 import Foundation
 
@@ -13,8 +12,9 @@ protocol SignRepository {
 }
 
 class SignRepositoryCompanion {
-    static func newInstance(authService: AuthService = AuthCompanion.newInstance()) -> SignRepository {
-        return SignRepositoryImpl(authService: authService)
+    static let instance = SignRepositoryImpl(authService: AuthService = AuthCompanion.newInstance())
+    static func getInstance() -> SignRepository {
+        return instance
     }
 }
 

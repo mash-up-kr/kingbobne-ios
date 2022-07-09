@@ -15,8 +15,9 @@ protocol MyProfileRepository {
 }
 
 class MyProfileRepositoryCompanion {
-    static func newInstance() -> MyProfileRepository {
-        return MyProfileRepositoryImpl()
+    private static let myProfileRepository = MyProfileRepositoryImpl()
+    static func getInstance() -> MyProfileRepository {
+        return myProfileRepository
     }
 }
 
