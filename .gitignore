@@ -107,4 +107,11 @@ xcuserdata
 **/xcshareddata/WorkspaceSettings.xcsettings
 .DS_Store
 
+### Tuist
+**/*.xcodeproj
+**/*.xcworkspace
+Tuist/Dependencies/SwiftPackageManager
+Tuist/Dependencies/graph.json
+**/Derived/
+
 # End of https://www.toptal.com/developers/gitignore/api/xcode,swift,swiftpackagemanager,swiftpm
