@@ -113,5 +113,6 @@ xcuserdata
 Tuist/Dependencies/SwiftPackageManager
 Tuist/Dependencies/graph.json
 **/Derived/
+project.pbxproj
 
 # End of https://www.toptal.com/developers/gitignore/api/xcode,swift,swiftpackagemanager,swiftpm
