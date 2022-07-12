@@ -9,6 +9,8 @@ import Foundation
 import RxSwift
 
 protocol SplashViewModel {
+    func refresh()
+    
     func observeState() -> Single<SplashState>
 }
 
@@ -27,37 +29,41 @@ class SplashViewModelImpl : SplashViewModel {
     private let stateSubject = PublishSubject<SplashState>()
     
     private let disposeBag: DisposeBag = DisposeBag()
+    private let myProfileRepository: MyProfileRepository
     
     init(
         signRepository: SignRepository,
         myProfileRepository: MyProfileRepository
     ) {
-        signRepository.sample()
-            .subscribe(on: ConcurrentDispatchQueueScheduler(qos: .background))
-            .subscribe(
-                onSuccess: { images in
-                    print(images)
-                }
-            )
-            .disposed(by: disposeBag)
-        
+        self.myProfileRepository = myProfileRepository
+    }
+    
+    func refresh() {
         myProfileRepository.fetchMyProfile()
             .subscribe(on: ConcurrentDispatchQueueScheduler(qos: .background))
+            .flatMap { myProfile in self.ifMyProfilePresent(myProfile: myProfile) }
             .subscribe(
                 onSuccess: { myProfile in
                     self.stateSubject.onNext(SplashState.NAVIGATE_TO_HOME)
                 },
                 onFailure: { _ in
-                    self.stateSubject.onNext(SplashState.NAVIGATE_TO_LOGIN)
+                    self.stateSubject.onNext(SplashState.NAVIGATE_TO_SIGN)
                 }
             )
             .disposed(by: disposeBag)
-        
-        myProfileRepository.refresh()
     }
     
     func observeState() -> Single<SplashState> {
-        return stateSubject.asSingle()
+        return stateSubject.firstOrError()
+            .observe(on: MainScheduler.instance)
+    }
+    
+    func ifMyProfilePresent(myProfile: UserProfile) -> Single<UserProfile> {
+        if myProfile == UserProfile.EMPTY {
+            return Single<UserProfile>.error(NSError.init())
+        } else {
+            return Single.just(myProfile)
+        }
     }
 }
 

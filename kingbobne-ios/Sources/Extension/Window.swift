@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 extension UIWindow {
-    func replaceRootViewController(_ replacementController: UIViewController, animated: Bool, completion: (() -> Void)?) {
+    func replaceRootViewController(_ replacementController: UIViewController, animated: Bool = false, completion: (() -> Void)? = nil) {
        let snapshotImageView = UIImageView(image: self.snapshot())
        self.addSubview(snapshotImageView)
         
