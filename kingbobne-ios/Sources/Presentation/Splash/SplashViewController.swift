@@ -11,7 +11,8 @@ import RxSwift
 
 class SplashViewController: UIViewController {
     private let STORYBOARD_SIGN_NAME = "Sign"
-    private let STORYBOARD_SIGN_IDENTIFIER = "SignViewController"
+    private let STORYBOARD_SIGN_NAVIGATION_IDENTIFIER = "SignNavigationViewController"
+    
     
     private let viewModel = SplashViewModelCompanion.newInstance()
     private let disposeBag = DisposeBag()
@@ -48,7 +49,7 @@ class SplashViewController: UIViewController {
     
     private func navigateToSign() {
         let storyboard = UIStoryboard.init(name: STORYBOARD_SIGN_NAME, bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: STORYBOARD_SIGN_IDENTIFIER)
+        let viewController = storyboard.instantiateViewController(withIdentifier: STORYBOARD_SIGN_NAVIGATION_IDENTIFIER)
         
         UIApplication.shared.windows.first?.replaceRootViewController(viewController)
     }
