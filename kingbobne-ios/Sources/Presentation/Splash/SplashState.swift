@@ -8,6 +8,6 @@
 import Foundation
 
 enum SplashState {
-    case NAVIGATE_TO_LOGIN
+    case NAVIGATE_TO_SIGN
     case NAVIGATE_TO_HOME
 }

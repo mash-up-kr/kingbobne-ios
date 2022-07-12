@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct UserProfile: Identifiable {
+struct UserProfile: Identifiable, Equatable {
     let id: String
     
     static let EMPTY = UserProfile(id:"")
