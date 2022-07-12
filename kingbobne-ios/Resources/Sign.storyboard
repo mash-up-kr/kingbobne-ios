@@ -104,10 +104,10 @@
             </objects>
             <point key="canvasLocation" x="928.98550724637687" y="78.348214285714278"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Sign Navigation View Controller-->
         <scene sceneID="JuI-HM-LNR">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="izZ-kX-RvT" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="SignNavigationViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="izZ-kX-RvT" customClass="SignNavigationViewController" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="H0M-Ei-NJS">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
