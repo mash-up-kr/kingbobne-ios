@@ -18,7 +18,6 @@ class MainTabBarController: UITabBarController {
         let myCookingViewController = UIStoryboard(name: "MyCooking", bundle: nil).instantiateViewController(withIdentifier: "MyCookingViewController") as! MyCookingViewController
         
         homeViewController.title = "홈"
-        homeViewController.tabBarItem.image = UIImage(named: <#T##String#>)
         postKkiLogViewController.title = "끼록하기"
         myCookingViewController.title = "내 요리"
         
