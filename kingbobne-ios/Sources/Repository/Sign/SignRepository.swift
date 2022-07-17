@@ -9,7 +9,9 @@ import Foundation
 import RxSwift
 
 protocol SignRepository {
-    func sample() -> Single<Array<ImageData>>
+    func signIn(email: String, password: String) -> Completable
+    
+    func isSignedIn() -> Single<Bool>
 }
 
 class SignRepositoryCompanion {
@@ -21,14 +23,24 @@ class SignRepositoryCompanion {
 }
 
 class SignRepositoryImpl: SignRepository {
+    
     let authService: AuthService
     
     init(authService: AuthService) {
         self.authService = authService
     }
     
-    func sample() -> Single<Array<ImageData>> {
-        return authService.sample()
+    func signIn(email: String, password: String) -> Completable {
+        return authService.signIn(email: email, password: password)
+            .do(onSuccess: { accessToken in
+                // TODO save access token to shared area
+                accessToken.save()
+            })
+            .asCompletable()
+    }
+    
+    func isSignedIn() -> Single<Bool> {
+        return Single.just(AccessToken.getOrNil() != nil)
     }
     
 }
