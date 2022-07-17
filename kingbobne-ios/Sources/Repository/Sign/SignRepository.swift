@@ -22,7 +22,7 @@ class SignRepositoryCompanion {
     }
 }
 
-class SignRepositoryImpl: SignRepository {
+internal class SignRepositoryImpl: SignRepository {
     
     let authService: AuthService
     
