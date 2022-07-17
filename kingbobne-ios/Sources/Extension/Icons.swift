@@ -15,6 +15,9 @@ extension UIImage {
     public static let ic_error_20 = UIImage(named: "ic_error_20")!
     public static let img_dish = UIImage(named: "img_dish")!
     public static let img_kick_40 = UIImage(named: "img_kick_40")!
-    
+    public static let ic_recipe_active_44 = UIImage(named: "ic_recipe_active_44")!
+    public static let ic_recipe_disable_44 = UIImage(named: "ic_recipe_disable_44")!
+    public static let ic_home_active_44 = UIImage(named: "ic_home_active_44")!
+    public static let ic_home_disable_44 = UIImage(named: "ic_home_disable_44")!
     
 }
