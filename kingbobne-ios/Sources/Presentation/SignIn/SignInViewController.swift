@@ -95,7 +95,7 @@ class SignInViewController: UIViewController {
     }
     
     @IBAction func onSignInAction(_ sender: Any) {
-        let homeVC = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+        let homeVC = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "MainTabBarController") as! MainTabBarController
         UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.replaceRootViewController(homeVC, animated: true, completion: nil)
     }
 }
