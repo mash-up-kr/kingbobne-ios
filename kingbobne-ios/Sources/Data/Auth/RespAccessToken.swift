@@ -8,7 +8,5 @@
 import Foundation
 
 internal struct RespAccessToken: Codable {
-    let token: String
-    let expiresIn: Int
-    let refreshToken: String
+    let accessToken: String
 }

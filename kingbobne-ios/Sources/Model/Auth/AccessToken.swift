@@ -7,8 +7,6 @@
 
 import Foundation
 
-struct AccessToken {
+struct AccessToken : Equatable {
     var token: String
-    var expiredAt: Date
-    var refreshToken: String
 }

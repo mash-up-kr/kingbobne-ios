@@ -11,9 +11,12 @@ import RxMoya
 import RxSwift
 
 internal enum AuthApi {
-    case getToken(email: String, password: String)
-    case refreshToken(refreshToken: String)
-    case sample
+    case signIn(body: ReqSignIn)
+    case validateEmail(email: String)
+    case requestAuthCode(body: ReqRequestAuthCode)
+    case authenticateCode(body: ReqAuthenticateCode)
+    case validateNickname(nickname: String)
+    case signUp(body: ReqSignUp)
 }
 
 extension AuthApi : TargetType {
@@ -23,21 +26,40 @@ extension AuthApi : TargetType {
     
     public var path: String {
         switch self {
-        case .getToken: return "/token"
-        case .refreshToken: return "/refresh-token"
-        case .sample: return "/"
+        case .signIn: return "/auth/login"
+        case .validateEmail: return "/auth/validate/email"
+        case .requestAuthCode: return "/auth/code"
+        case .authenticateCode: return "/auth/code/check"
+        case .validateNickname: return "/auth/validate/nickname"
+        case .signUp: return "/auth/signup"
         }
     }
     public var method: Moya.Method {
         switch self {
-        case .getToken: return Moya.Method.post
-        case .refreshToken: return Moya.Method.post
-        case .sample: return Moya.Method.get
+        case .signIn: return Moya.Method.post
+        case .validateEmail: return Moya.Method.get
+        case .requestAuthCode: return Moya.Method.post
+        case .authenticateCode: return Moya.Method.post
+        case .validateNickname: return Moya.Method.get
+        case .signUp: return Moya.Method.post
         }
     }
     
     public var task: Task {
-        return .requestPlain
+        switch self {
+        case .validateEmail(let email):
+            return .requestParameters(parameters: ["email": email], encoding: URLEncoding.queryString)
+        case .validateNickname(let nickname):
+            return .requestParameters(parameters: ["nickname": nickname], encoding: URLEncoding.queryString)
+        case .signIn(let body):
+            return .requestJSONEncodable(body)
+        case .signUp(let body):
+            return .requestJSONEncodable(body)
+        case .requestAuthCode(let body):
+            return .requestJSONEncodable(body)
+        case .authenticateCode(let body):
+            return .requestJSONEncodable(body)
+        }
     }
     
     public var headers: [String : String]? {
@@ -46,9 +68,12 @@ extension AuthApi : TargetType {
 }
 
 protocol AuthService: Service {
-    func sample() -> Single<Array<ImageData>>
-    func getToken(email: String, password: String) -> Single<AccessToken>
-    func refreshToken(refreshToken: String) -> Single<AccessToken>
+    func signIn(email: String, password: String) -> Single<AccessToken>
+    func signUp(email: String, password: String, nickname: String) -> Single<AccessToken>
+    func validateEmail(email: String) -> Completable
+    func requestAuthCode(email: String, type: AuthCodeTypeDto) -> Completable
+    func authenticateCode(email: String, code: String, type: AuthCodeTypeDto) -> Completable
+    func validateNickname(nickname: String) -> Completable
 }
 
 class AuthCompanion {
@@ -59,23 +84,10 @@ class AuthCompanion {
 
 fileprivate class AuthServiceImpl: AuthService, Networkable {
     
-    
     var provider: MoyaProvider<AuthApi> = MoyaProvider<AuthApi>()
-    
-    func sample() -> Single<Array<ImageData>> {
-        return provider.rx.request(.sample)
-            .flatMap { response in
-                do {
-                    let dto = try response.map(Array<RespImage>.self)
-                    return Single.just(dto.map { $0.convert() })
-                } catch { 
-                    return Single.error(error)
-                }
-            }
-    }
-    
-    func getToken(email: String, password: String) -> Single<AccessToken> {
-        return provider.rx.request(.getToken(email: email, password: password))
+ 
+    func signIn(email: String, password: String) -> Single<AccessToken> {
+        return provider.rx.request(.signIn(body: ReqSignIn(email: email, password: password)))
             .flatMap { response in
                 do {
                     let accessToken = try response.convert()
@@ -86,8 +98,8 @@ fileprivate class AuthServiceImpl: AuthService, Networkable {
             }
     }
     
-    func refreshToken(refreshToken: String) -> Single<AccessToken> {
-        return provider.rx.request(.refreshToken(refreshToken: refreshToken))
+    func signUp(email: String, password: String, nickname: String) -> Single<AccessToken> {
+        return provider.rx.request(.signUp(body: ReqSignUp(email: email, password: password, nickname: nickname)))
             .flatMap { response in
                 do {
                     let accessToken = try response.convert()
@@ -97,6 +109,32 @@ fileprivate class AuthServiceImpl: AuthService, Networkable {
                 }
             }
     }
+    
+    func validateEmail(email: String) -> Completable {
+        return provider.rx.request(.validateEmail(email: email))
+            .filterSuccessfulStatusCodes()
+            .asCompletable()
+            
+    }
+    
+    func requestAuthCode(email: String, type: AuthCodeTypeDto) -> Completable {
+        return provider.rx.request(.requestAuthCode(body: ReqRequestAuthCode(email: email, type: type)))
+            .filterSuccessfulStatusCodes()
+            .asCompletable()
+    }
+    
+    func authenticateCode(email: String, code: String, type: AuthCodeTypeDto) -> Completable {
+        return provider.rx.request(.authenticateCode(body: ReqAuthenticateCode(email: email, code: code, type: type)))
+            .filterSuccessfulStatusCodes()
+            .asCompletable()
+    }
+    
+    func validateNickname(nickname: String) -> Completable {
+        return provider.rx.request(.validateNickname(nickname: nickname))
+            .filterSuccessfulStatusCodes()
+            .asCompletable()
+    }
+   
 }
 
 fileprivate extension Response {
@@ -108,27 +146,6 @@ fileprivate extension Response {
 
 fileprivate extension RespAccessToken {
     func convert() -> AccessToken {
-        let expiredAt = Date().addingTimeInterval(Double(expiresIn))
-        return AccessToken(token: token, expiredAt: expiredAt, refreshToken: refreshToken)
+        return AccessToken(token: accessToken)
     }
-}
-
-struct RespImage: Codable, Identifiable {
-    let id: String
-    let author: String
-    let width: Int
-    let height: Int
-    let url: String
-    
-    func convert() -> ImageData {
-        return ImageData(id: id, author: author, width: width, height: height, url: url)
-    }
-}
-
-struct ImageData: Identifiable {
-    let id: String
-    let author: String
-    let width: Int
-    let height: Int
-    let url: String
 }
