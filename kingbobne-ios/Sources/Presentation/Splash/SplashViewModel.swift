@@ -30,12 +30,14 @@ class SplashViewModelImpl : SplashViewModel {
     
     private let disposeBag: DisposeBag = DisposeBag()
     private let myProfileRepository: MyProfileRepository
+    private let signRepository: SignRepository
     
     init(
         signRepository: SignRepository,
         myProfileRepository: MyProfileRepository
     ) {
         self.myProfileRepository = myProfileRepository
+        self.signRepository = signRepository
     }
     
     func refresh() {

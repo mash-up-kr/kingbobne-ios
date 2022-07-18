@@ -8,7 +8,7 @@
 import Foundation
 
 class BaseUrl {
-    static let value: URL = URL(string: "https://picsum.photos/v2/list")!
+    static let value: URL = URL(string: "https://kki-log-api.herokuapp.com/api")!
     
     private init() { }
 }
