@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="HomeFriendCollectionViewCell" insetsLayoutMarginsFromSafeArea="NO" id="gTV-IL-0wX" customClass="HomeFriendCollectionViewCell" customModule="kingbobne_ios" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Io-iL-2ls">
+                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8wJ-sI-eib">
+                                <rect key="frame" x="2" y="2" width="36" height="36"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="BGM-8u-8an"/>
+                            <constraint firstAttribute="width" constant="40" id="IFZ-ey-t3b"/>
+                            <constraint firstItem="8wJ-sI-eib" firstAttribute="leading" secondItem="6Io-iL-2ls" secondAttribute="leading" constant="2" id="WiG-Dx-wUn"/>
+                            <constraint firstAttribute="bottom" secondItem="8wJ-sI-eib" secondAttribute="bottom" constant="2" id="X21-g9-eLy"/>
+                            <constraint firstItem="8wJ-sI-eib" firstAttribute="top" secondItem="6Io-iL-2ls" secondAttribute="top" constant="2" id="f8z-1W-s5m"/>
+                            <constraint firstAttribute="trailing" secondItem="8wJ-sI-eib" secondAttribute="trailing" constant="2" id="qaU-eE-rmX"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="6Io-iL-2ls" secondAttribute="bottom" id="IxT-cT-c5z"/>
+                <constraint firstItem="6Io-iL-2ls" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="SVR-jG-a4E"/>
+                <constraint firstItem="6Io-iL-2ls" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Vtl-gc-gyy"/>
+                <constraint firstAttribute="trailing" secondItem="6Io-iL-2ls" secondAttribute="trailing" id="Z3f-I0-AXt"/>
+            </constraints>
+            <connections>
+                <outlet property="backgroundCircleView" destination="6Io-iL-2ls" id="b7m-Y0-kWe"/>
+                <outlet property="characterView" destination="8wJ-sI-eib" id="ov8-Nn-BJw"/>
+            </connections>
+            <point key="canvasLocation" x="139" y="153"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
