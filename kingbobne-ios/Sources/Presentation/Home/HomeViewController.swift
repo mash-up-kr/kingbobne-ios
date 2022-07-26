@@ -22,6 +22,7 @@ final class HomeViewController: UIViewController {
         super.viewDidLoad()
         setCollectionView()
         setUIComponent()
+        //Test
     }
     
     override func viewWillAppear(_ animated: Bool) {
