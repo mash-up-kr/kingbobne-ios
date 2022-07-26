@@ -16,6 +16,7 @@ final class HomeViewController: UIViewController {
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var myPageButton: UIButton!
     @IBOutlet weak var alarmButton: UIButton!
+    @IBOutlet weak var characterImageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,6 +61,7 @@ final class HomeViewController: UIViewController {
         [myPageButton, alarmButton].forEach({
             $0?.tintColor = UIColor(red: 80/255, green: 80/255, blue: 80/255, alpha: 1.0)
         })
+        characterImageView.image = UIImage(named: "Lv3_배부를때")
     }
     
     @IBAction func onAlarmAction(_ sender: Any) {

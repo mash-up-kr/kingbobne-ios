@@ -158,6 +158,12 @@
                                     <action selector="onAlarmAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="8jk-3D-Mdw"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ySt-B7-eDf">
+                                <rect key="frame" x="0.0" y="279.5" width="414" height="298"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="ySt-B7-eDf" secondAttribute="height" multiplier="375:270" id="yOd-Qh-YwF"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -169,14 +175,19 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="RcD-Za-FDc" secondAttribute="trailing" id="Bw0-R4-7e9"/>
                             <constraint firstItem="cVD-cf-aGB" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="24" id="Cn7-Cg-o7t"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Bdd-3P-Zpc" secondAttribute="trailing" constant="18" id="ERa-9N-uUi"/>
+                            <constraint firstItem="ySt-B7-eDf" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="IOg-Vq-FNH"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="ySt-B7-eDf" secondAttribute="trailing" id="SPP-kv-dEu"/>
                             <constraint firstItem="RcD-Za-FDc" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="XZ5-hI-mGf"/>
+                            <constraint firstItem="ySt-B7-eDf" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="h9z-Uf-H3p"/>
                             <constraint firstItem="RcD-Za-FDc" firstAttribute="top" secondItem="F0O-BY-Paf" secondAttribute="bottom" constant="13" id="sYo-g2-NeU"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="cVD-cf-aGB" secondAttribute="trailing" constant="24" id="vNk-Rj-Szy"/>
+                            <constraint firstItem="ySt-B7-eDf" firstAttribute="centerY" secondItem="vDu-zF-Fre" secondAttribute="centerY" id="xwN-CH-drD"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="moY-bE-O3M"/>
                     <connections>
                         <outlet property="alarmButton" destination="F0O-BY-Paf" id="1VV-8k-pEn"/>
+                        <outlet property="characterImageView" destination="ySt-B7-eDf" id="5sZ-NX-liH"/>
                         <outlet property="descriptionLabel" destination="FpK-ud-aDs" id="11M-W3-A8Z"/>
                         <outlet property="friendCollectionView" destination="RcD-Za-FDc" id="SEJ-hv-jrG"/>
                         <outlet property="myPageButton" destination="Bdd-3P-Zpc" id="Ja8-Kf-VOC"/>
