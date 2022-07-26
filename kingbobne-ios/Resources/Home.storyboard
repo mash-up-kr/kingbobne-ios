@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="RcD-Za-FDc">
-                                <rect key="frame" x="0.0" y="44" width="414" height="40"/>
+                                <rect key="frame" x="0.0" y="115" width="414" height="40"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="sqV-Ad-BEB"/>
@@ -134,22 +134,52 @@
                                     <constraint firstAttribute="bottom" secondItem="6RE-RW-nan" secondAttribute="bottom" id="sSc-Ie-XZI"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bdd-3P-Zpc">
+                                <rect key="frame" x="356" y="62" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="cUl-Z1-sBx"/>
+                                    <constraint firstAttribute="height" constant="40" id="pJz-dl-uqN"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="onMyPageAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="HlB-P5-twH"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F0O-BY-Paf">
+                                <rect key="frame" x="298" y="62" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="7o3-ed-O2b"/>
+                                    <constraint firstAttribute="height" constant="40" id="JuT-K6-62d"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="onAlarmAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="8jk-3D-Mdw"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="Bdd-3P-Zpc" firstAttribute="leading" secondItem="F0O-BY-Paf" secondAttribute="trailing" constant="18" id="07o-xw-Yu9"/>
+                            <constraint firstItem="Bdd-3P-Zpc" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="18" id="3zR-bo-uVS"/>
+                            <constraint firstItem="F0O-BY-Paf" firstAttribute="centerY" secondItem="Bdd-3P-Zpc" secondAttribute="centerY" id="8Cf-zP-mBX"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="cVD-cf-aGB" secondAttribute="bottom" constant="25" id="8Ha-10-Z0I"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="RcD-Za-FDc" secondAttribute="trailing" id="Bw0-R4-7e9"/>
                             <constraint firstItem="cVD-cf-aGB" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="24" id="Cn7-Cg-o7t"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Bdd-3P-Zpc" secondAttribute="trailing" constant="18" id="ERa-9N-uUi"/>
                             <constraint firstItem="RcD-Za-FDc" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="XZ5-hI-mGf"/>
-                            <constraint firstItem="RcD-Za-FDc" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="sYo-g2-NeU"/>
+                            <constraint firstItem="RcD-Za-FDc" firstAttribute="top" secondItem="F0O-BY-Paf" secondAttribute="bottom" constant="13" id="sYo-g2-NeU"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="cVD-cf-aGB" secondAttribute="trailing" constant="24" id="vNk-Rj-Szy"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="moY-bE-O3M"/>
                     <connections>
+                        <outlet property="alarmButton" destination="F0O-BY-Paf" id="1VV-8k-pEn"/>
                         <outlet property="descriptionLabel" destination="FpK-ud-aDs" id="11M-W3-A8Z"/>
                         <outlet property="friendCollectionView" destination="RcD-Za-FDc" id="SEJ-hv-jrG"/>
+                        <outlet property="myPageButton" destination="Bdd-3P-Zpc" id="Ja8-Kf-VOC"/>
                         <outlet property="questionLabel" destination="meN-pP-qYo" id="axd-Ed-obG"/>
                         <outlet property="recommendMenuButton" destination="0zc-Hc-not" id="gHD-sE-FI9"/>
                         <outletCollection property="bottomViewDividers" destination="yVP-cU-bM6" collectionClass="NSMutableArray" id="uF6-5s-LR0"/>

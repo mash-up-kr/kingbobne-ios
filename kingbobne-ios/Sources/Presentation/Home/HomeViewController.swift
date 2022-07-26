@@ -14,12 +14,23 @@ final class HomeViewController: UIViewController {
     @IBOutlet weak var recommendMenuButton: ClearButton!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var questionLabel: UILabel!
+    @IBOutlet weak var myPageButton: UIButton!
+    @IBOutlet weak var alarmButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setCollectionView()
         setUIComponent()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.isHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.navigationBar.isHidden = false
     }
     
     private func setCollectionView() {
@@ -43,8 +54,21 @@ final class HomeViewController: UIViewController {
         
         descriptionLabel.text = "일이삼사오육칠팝구십"
         questionLabel.text = "해가 중천인데 배 안고파요?"
+        
+        myPageButton.setImage(UIImage.ic_mypage_44, for: .normal)
+        alarmButton.setImage(UIImage.ic_alarm_44, for: .normal)
+        [myPageButton, alarmButton].forEach({
+            $0?.tintColor = UIColor(red: 80/255, green: 80/255, blue: 80/255, alpha: 1.0)
+        })
     }
-
+    
+    @IBAction func onAlarmAction(_ sender: Any) {
+        // TODO
+    }
+    
+    @IBAction func onMyPageAction(_ sender: Any) {
+        // TODO
+    }
 }
 extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
