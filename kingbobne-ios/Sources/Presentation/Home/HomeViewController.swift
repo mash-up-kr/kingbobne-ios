@@ -8,10 +8,12 @@
 import UIKit
 
 class HomeViewController: UIViewController {
+    
+    private let viewModel: HomeViewModel = HomeViewModelCompanion.newInstance()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
 
 }
