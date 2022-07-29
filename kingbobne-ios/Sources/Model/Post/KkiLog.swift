@@ -15,4 +15,14 @@ struct KkiLog: Identifiable, Equatable {
     let kick: String?
     let bookmark: Bool
     let createdAt: Date
+    
+    static let EMPTY: KkiLog = .init(
+        id: "",
+        photos: [],
+        title: "",
+        content: "",
+        kick: nil,
+        bookmark: false,
+        createdAt: Date.now
+    )
 }
