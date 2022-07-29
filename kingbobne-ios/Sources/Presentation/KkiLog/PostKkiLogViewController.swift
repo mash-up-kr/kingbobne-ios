@@ -9,6 +9,8 @@
 import UIKit
 
 class PostKkiLogViewController: UIViewController {
+    
+    private let viewModel = PostKkiLogViewModelCompanion.newInstance()
 
     override func viewDidLoad() {
         super.viewDidLoad()
