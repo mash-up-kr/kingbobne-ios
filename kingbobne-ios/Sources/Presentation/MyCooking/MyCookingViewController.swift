@@ -9,6 +9,8 @@
 import UIKit
 
 class MyCookingViewController: UIViewController {
+    
+    private let viewModel = MyCookingViewModelCompanion.newInstance()
 
     override func viewDidLoad() {
         super.viewDidLoad()

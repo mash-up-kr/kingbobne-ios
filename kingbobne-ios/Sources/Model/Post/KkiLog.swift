@@ -23,6 +23,6 @@ struct KkiLog: Identifiable, Equatable {
         content: "",
         kick: nil,
         bookmark: false,
-        createdAt: Date.now
+        createdAt: .init()
     )
 }
