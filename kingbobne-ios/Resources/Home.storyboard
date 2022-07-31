@@ -200,6 +200,7 @@
                         <outlet property="characterImageView" destination="ySt-B7-eDf" id="5sZ-NX-liH"/>
                         <outlet property="descriptionLabel" destination="FpK-ud-aDs" id="11M-W3-A8Z"/>
                         <outlet property="friendCollectionView" destination="RcD-Za-FDc" id="SEJ-hv-jrG"/>
+                        <outlet property="homeInfoView" destination="CZH-2E-Bjr" id="fWT-cS-QNy"/>
                         <outlet property="myPageButton" destination="Bdd-3P-Zpc" id="Ja8-Kf-VOC"/>
                         <outlet property="questionLabel" destination="meN-pP-qYo" id="axd-Ed-obG"/>
                         <outlet property="recommendMenuButton" destination="0zc-Hc-not" id="gHD-sE-FI9"/>

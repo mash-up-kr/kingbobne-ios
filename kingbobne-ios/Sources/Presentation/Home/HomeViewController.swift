@@ -17,12 +17,14 @@ final class HomeViewController: UIViewController {
     @IBOutlet weak var myPageButton: UIButton!
     @IBOutlet weak var alarmButton: UIButton!
     @IBOutlet weak var characterImageView: UIImageView!
+    @IBOutlet weak var homeInfoView: HomeInfoView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setCollectionView()
         setUIComponent()
-        //Test
+        homeInfoView.postKkilogButton.addTarget(self, action: #selector(addKkilogAction), for: .touchUpInside)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -63,6 +65,11 @@ final class HomeViewController: UIViewController {
             $0?.tintColor = UIColor(red: 80/255, green: 80/255, blue: 80/255, alpha: 1.0)
         })
         characterImageView.image = UIImage(named: "Lv3_배부를때")
+    }
+    
+    @objc func addKkilogAction(){
+        // TODO
+        print("addKkilogAction")
     }
     
     @IBAction func onAlarmAction(_ sender: Any) {
