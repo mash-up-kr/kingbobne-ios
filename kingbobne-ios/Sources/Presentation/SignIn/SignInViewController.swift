@@ -9,7 +9,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-class SignInViewController: UIViewController {
+final class SignInViewController: BaseKeyboardViewController {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionButton: ClearButton!
@@ -30,12 +30,6 @@ class SignInViewController: UIViewController {
         super.viewDidLoad()
         setUpUI()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
-        self.view.addGestureRecognizer(tapGesture)
-        
         observeEmailTextFieldChanged()
         observePasswordTextFieldChanged()
         observeCompletionButtonClicked()
@@ -44,10 +38,6 @@ class SignInViewController: UIViewController {
         observePasswordState()
         observeSignInButtonActivated()
         observeSignInState()
-    }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self)
     }
     
     private func observeEmailTextFieldChanged() {
@@ -202,10 +192,6 @@ class SignInViewController: UIViewController {
         // TODO
     }
     
-    @objc func handleTap() {
-        view.endEditing(true)
-    }
-    
     func setUpUI() {
         titleLabel.font = .setFont(style: .Headlineline1Regular)
         titleLabel.textColor = .Custom.brownGray500
@@ -232,7 +218,7 @@ class SignInViewController: UIViewController {
         completionButton.setButtonStyle(text: "완료", fontStyle: .Body1Bold, fontColor: .Custom.brownGray300, buttonColor: .Custom.brownGray100)
     }
     
-    @objc func keyboardWillShow(notification: NSNotification) {
+    override func keyboardWillShow(notification: NSNotification) {
         guard let targetHeight = getKeyboardHeight(notification: notification) else { return }
         
         let keyboardAnim = getKeyboardAnimationValue(notification: notification)
@@ -243,7 +229,7 @@ class SignInViewController: UIViewController {
         }
     }
     
-    @objc func keyboardWillHide(notification: NSNotification) {
+    override func keyboardWillHide(notification: NSNotification) {
         let keyboardAnim = getKeyboardAnimationValue(notification: notification)
         if let duration = keyboardAnim.duration, let curveOpt = keyboardAnim.curveOption {
             UIView.animate(withDuration: duration, delay: 0, options: curveOpt, animations: {

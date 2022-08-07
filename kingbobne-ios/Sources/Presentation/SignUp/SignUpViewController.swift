@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class SignUpViewController: UIViewController {
+final class SignUpViewController: BaseKeyboardViewController {
 
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var dividerView: UIView!
@@ -34,5 +34,27 @@ final class SignUpViewController: UIViewController {
         
         nextButton.setButtonStyle(text: "다음", fontStyle: .Body1Bold, fontColor: .Custom.brownGray300, buttonColor: .Custom.brownGray100)
     }
+    
+    override func keyboardWillShow(notification: NSNotification) {
+        guard let targetHeight = getKeyboardHeight(notification: notification) else { return }
+        
+        let keyboardAnim = getKeyboardAnimationValue(notification: notification)
+        if let duration = keyboardAnim.duration, let curveOpt = keyboardAnim.curveOption {
+            UIView.animate(withDuration: duration, delay: 0, options: curveOpt, animations: {
+                self.nextButtonBottomConstraint.constant = targetHeight + 30
+            })
+        }
+    }
+    
+    override func keyboardWillHide(notification: NSNotification) {
+        let keyboardAnim = getKeyboardAnimationValue(notification: notification)
+        if let duration = keyboardAnim.duration, let curveOpt = keyboardAnim.curveOption {
+            UIView.animate(withDuration: duration, delay: 0, options: curveOpt, animations: {
+                self.nextButtonBottomConstraint.constant = 30
+            })
+        }
+    }
+    
+    
 
 }
