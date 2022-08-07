@@ -7,7 +7,9 @@
 
 import UIKit
 
-final class HomeViewController: UIViewController {
+class HomeViewController: UIViewController {
+    
+    private let viewModel: HomeViewModel = HomeViewModelCompanion.newInstance()
 
     @IBOutlet weak var friendCollectionView: UICollectionView!
     @IBOutlet var bottomViewDividers: [UIView]!

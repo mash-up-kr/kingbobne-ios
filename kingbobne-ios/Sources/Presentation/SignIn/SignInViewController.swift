@@ -46,6 +46,10 @@ class SignInViewController: UIViewController {
         observeSignInState()
     }
     
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     private func observeEmailTextFieldChanged() {
         emailTextField.rx.text
             .debounce(.milliseconds(200), scheduler: MainScheduler.instance)
