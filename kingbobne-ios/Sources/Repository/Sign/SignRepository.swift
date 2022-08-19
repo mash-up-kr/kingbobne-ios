@@ -10,8 +10,8 @@ import RxSwift
 
 protocol SignRepository {
     func signIn(email: String, password: String) -> Completable
-    
     func isSignedIn() -> Single<Bool>
+    func signUpEmail(email: String) -> Completable
 }
 
 class SignRepositoryCompanion {
@@ -41,6 +41,16 @@ internal class SignRepositoryImpl: SignRepository {
     
     func isSignedIn() -> Single<Bool> {
         return Single.just(AccessToken.getOrNil() != nil)
+    }
+    
+    func signUpEmail(email: String) -> Completable {
+        return authService.validateEmail(email: email)
+            .do(onCompleted: {
+                print("signUpEmail - onCompleted")
+                },
+                    onSubscribe: {
+                print("signUpEmail - onSubscribe")
+                })
     }
     
 }
