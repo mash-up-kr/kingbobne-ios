@@ -85,7 +85,7 @@ fileprivate class SignInViewModelImpl : SignInViewModel {
             var viewState = try self.signInViewStateSubject.value()
             if (results.isEmpty) {
                 viewState.emailState.validated = false
-                viewState.emailState.message = "Inavlid email format"
+                viewState.emailState.message = ValidationState.VALIDATION_FORMAT_ERROR_MESSAGE
                 signInViewStateSubject.onNext(viewState)
             } else {
                 viewState.emailState.validated = true
@@ -107,7 +107,14 @@ fileprivate class SignInViewModelImpl : SignInViewModel {
                 signInViewStateSubject.onNext(viewState)
             } else {
                 viewState.passwordState.validated = false
-                viewState.passwordState.message = "Inavlid password format"
+                if (password.isEmpty) {
+                    viewState.passwordState.message = ValidationState.VALIDATION_FORMAT_ERROR_MESSAGE
+                } else if (password.count < SignInViewModelImpl.MIN_PASSWORD) {
+                    viewState.passwordState.message = "최소 " + String(SignInViewModelImpl.MIN_PASSWORD) + "글자가 필요합니다."
+                } else {
+                    viewState.passwordState.message = "최대 " + String(SignInViewModelImpl.MAX_PASSWORD) + "글자가 필요합니다."
+                }
+                
                 signInViewStateSubject.onNext(viewState)
             }
         } catch {

@@ -20,5 +20,7 @@ struct SignInViewState: Equatable {
 struct ValidationState: Equatable {
     var validated: Bool = false
     var message: String? = nil
+    
+    static let VALIDATION_FORMAT_ERROR_MESSAGE = "Invalid Format"
 }
 
