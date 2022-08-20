@@ -34,6 +34,25 @@ struct CharacterView: View {
                     .frame(alignment: .center)
                     .frame(maxWidth:.infinity)
                 
+                ZStack {
+                    Image(uiImage: .img_characterBackground)
+                        .frame(width: 228, height: 220, alignment: .center)
+                    
+                    Image(uiImage: viewModel.viewState.characterType.image())
+                        .frame(width: 248, height: 248, alignment: .center)
+                        .padding(EdgeInsets(top: 21, leading: 0, bottom: 0, trailing: 0))
+                }
+                .frame(maxWidth:.infinity, alignment: .top)
+                .padding(EdgeInsets(top: 36, leading: 0, bottom: 0, trailing: 0))
+                
+                Text("이제 끼록을 시작해볼까요?")
+                    .multilineTextAlignment(.center)
+                    .font(Font(uiFont: UIFont.setFont(style: .Body1Regular)))
+                    .foregroundColor(Color(UIColor.Custom.brownGray400))
+                    .padding(EdgeInsets(top: 4, leading: 0, bottom: 0, trailing: 0))
+                    .frame(alignment: .center)
+                    .frame(maxWidth:.infinity, alignment: .top)
+                
                 Spacer()
                 Button(action: {
                     self.viewModel.start()
@@ -71,6 +90,14 @@ extension CharacterType {
         case .BROCCOLI: return "와썹 가이즈~\n내 풍성한 머리 좀 볼래?ㅋㅋ"
         case .CARROT: return "안녕하세요!\n저는 흔하디 흔한 당근이에요>.<"
         case .GREEN_ONION: return "반가워! 나는 멋쟁이 대파!\n라면에 대파 안 넣으면 미워할꺼야"
+        }
+    }
+    
+    func image() -> UIImage {
+        switch self {
+        case .BROCCOLI: return .ic_alarm_44
+        case .CARROT: return .ic_alarm_44
+        case .GREEN_ONION: return .ic_alarm_44
         }
     }
 }
