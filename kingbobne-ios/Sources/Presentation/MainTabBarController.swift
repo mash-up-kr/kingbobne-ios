@@ -11,7 +11,7 @@ import UIKit
 class MainTabBarController: UITabBarController {
 
     var homeNavigationController = UINavigationController()
-    var postKkiLogNavigationController = UINavigationController()
+    var selectKkiLogViewController = UIViewController()
     var myCookingNavigationController = UINavigationController()
     
     override func viewDidLoad() {
@@ -21,21 +21,22 @@ class MainTabBarController: UITabBarController {
         delegate = self
         
         let homeViewController = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
-        let postKkiLogViewController = UIStoryboard(name: "Kkilog", bundle: nil).instantiateViewController(withIdentifier: "PostKkiLogViewController") as! PostKkiLogViewController
+        let selectKkiLogViewController = UIStoryboard(name: "Kkilog", bundle: nil).instantiateViewController(withIdentifier: "SelectKkiLogViewController") as! SelectKkiLogViewController
         let myCookingViewController = UIStoryboard(name: "MyCooking", bundle: nil).instantiateViewController(withIdentifier: "MyCookingViewController") as! MyCookingViewController
         
-        [homeViewController, postKkiLogViewController, myCookingViewController].forEach({
+        [homeViewController, selectKkiLogViewController, myCookingViewController].forEach({
             $0?.navigationItem.largeTitleDisplayMode = .always
         })
         
+        selectKkiLogViewController.modalPresentationStyle = .overFullScreen
+        
         homeNavigationController = UINavigationController(rootViewController: homeViewController)
-        postKkiLogNavigationController = UINavigationController(rootViewController: postKkiLogViewController)
         myCookingNavigationController = UINavigationController(rootViewController: myCookingViewController)
         
-        postKkiLogNavigationController.tabBarItem.image = UIImage.ic_add_44.withRenderingMode(.alwaysOriginal)
+        selectKkiLogViewController.tabBarItem.image = UIImage.ic_add_44.withRenderingMode(.alwaysOriginal)
         
         selectHomeTab()
-        setViewControllers([homeNavigationController, postKkiLogNavigationController, myCookingNavigationController], animated: false)
+        setViewControllers([homeNavigationController, selectKkiLogViewController, myCookingNavigationController], animated: false)
     }
     
     func selectHomeTab() {
@@ -71,11 +72,22 @@ class MainTabBarController: UITabBarController {
 
 }
 extension MainTabBarController: UITabBarControllerDelegate {
+    
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        if viewController is SelectKkiLogViewController {
+            if let controller = UIStoryboard(name: "Kkilog", bundle: nil).instantiateViewController(withIdentifier: "SelectKkiLogViewController") as? SelectKkiLogViewController {
+                self.presentPanModal(controller)
+            }
+            return false
+        }
+        return true
+    }
+    
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         switch viewController {
         case homeNavigationController:
             selectHomeTab()
-        case postKkiLogNavigationController:
+        case selectKkiLogViewController:
             selectPostKkiLogTab()
         case myCookingNavigationController:
             selectMyCookingTab()
