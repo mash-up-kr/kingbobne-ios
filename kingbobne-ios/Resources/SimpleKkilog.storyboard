@@ -16,9 +16,57 @@
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jLH-6C-SUk">
+                                <rect key="frame" x="4" y="54" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="BOF-rk-z0E"/>
+                                    <constraint firstAttribute="width" constant="44" id="knl-1a-wzT"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain"/>
+                                <connections>
+                                    <action selector="onClose:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="3ft-zD-grm"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uz9-WM-UEV" customClass="FullButton" customModule="kingbobne_ios" customModuleProvider="target">
+                                <rect key="frame" x="350" y="62.5" width="48" height="27"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="48" id="a7P-Fm-1x4"/>
+                                    <constraint firstAttribute="height" constant="27" id="ecb-un-bsb"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain"/>
+                                <connections>
+                                    <action selector="onPost:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="S4v-or-JL4"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N4U-EV-3fM">
+                                <rect key="frame" x="186" y="64" width="42" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="YgO-I6-dh8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="N4U-EV-3fM" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="H5w-jZ-Qt7"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Uz9-WM-UEV" secondAttribute="trailing" constant="16" id="LFg-CF-R8T"/>
+                            <constraint firstItem="jLH-6C-SUk" firstAttribute="centerY" secondItem="N4U-EV-3fM" secondAttribute="centerY" id="QSJ-IY-v3I"/>
+                            <constraint firstItem="Uz9-WM-UEV" firstAttribute="centerY" secondItem="N4U-EV-3fM" secondAttribute="centerY" id="da9-fL-prk"/>
+                            <constraint firstItem="jLH-6C-SUk" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="4" id="iQv-iE-uPz"/>
+                            <constraint firstItem="N4U-EV-3fM" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="nZa-MN-CRh"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="closeButton" destination="jLH-6C-SUk" id="xsB-3a-Svs"/>
+                        <outlet property="postButton" destination="Uz9-WM-UEV" id="N5z-AJ-SUZ"/>
+                        <outlet property="titleLabel" destination="N4U-EV-3fM" id="aeS-lw-1BS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
