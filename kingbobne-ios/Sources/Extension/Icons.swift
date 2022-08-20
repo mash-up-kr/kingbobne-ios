@@ -22,5 +22,9 @@ extension UIImage {
     public static let ic_mypage_44 = UIImage(named: "ic_mypage_44")!
     public static let ic_alarm_44 = UIImage(named: "ic_alarm_44")!
     public static let ic_xclose_44 = UIImage(named: "ic_xclose_44")!
+    public static let img_characterBackground = UIImage(named: "img_characterBackground")!
+    public static let img_lv1_brocolli = UIImage(named: "img_lv1_brocolli")!
+    public static let img_lv1_carrot = UIImage(named: "img_lv1_carrot")!
+    public static let img_lv1_greenOnion = UIImage(named: "img_lv1_greenOnion")!
     
 }
