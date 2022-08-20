@@ -72,6 +72,7 @@ class NicknameViewModel : ObservableObject {
             )
             .subscribe(
                 onCompleted: {
+                    print("success to sign up")
                     self.viewState.signUpLoadingState = LoadingState.success(data: ())
                     self.viewStateSubject.onNext(self.viewState)
                 },

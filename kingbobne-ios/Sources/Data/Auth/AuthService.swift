@@ -102,10 +102,11 @@ fileprivate class AuthServiceImpl: AuthService, Networkable {
         return provider.rx.request(.signUp(body: ReqSignUp(email: email, password: password, nickname: nickname)))
             .flatMap { response in
                 do {
-                    let respSignUp = try response.map(RespSignUp.self)
-                    AccessToken(token: respSignUp.token).save()
-                    return Single.just(respSignUp.character.convert())
+                    let respSignUp = try response.map(DataWrapper<RespSignUp>.self)
+                    AccessToken(token: respSignUp.data.token).save()
+                    return Single.just(respSignUp.data.character.convert())
                 } catch {
+                    print(error)
                     return Single.error(error)
                 }
             }

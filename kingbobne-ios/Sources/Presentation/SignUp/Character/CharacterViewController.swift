@@ -1,5 +1,5 @@
 //
-//  NicknameViewController.swift
+//  CharacterViewController.swift
 //  kingbobne-ios
 //
 //  Created by victhor on 2022/08/21.
@@ -10,31 +10,29 @@ import UIKit
 import SwiftUI
 import RxSwift
 
-class NicknameViewController: BaseKeyboardViewController {
-    private let viewModel = NicknameViewModel()
+class CharacterViewController: BaseKeyboardViewController {
+    private let viewModel = CharacterViewModel()
     
     private let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
-        let contentView = UIHostingController(rootView: NicknameView(viewModel: self.viewModel))
+        let contentView = UIHostingController(rootView: CharacterView(viewModel: self.viewModel))
         contentView.loadView()
         addChild(contentView)
         view.addSubview(contentView.view)
         setupContsraints(contentView: contentView)
         
-        viewModel.observeSignUpLoadingState()
+        viewModel.observeStartState()
             .subscribe(
-                onNext: { loadingState in
-                    if (loadingState == .success(data: ())) {
-                        let characterViewController = CharacterViewController()
-                        UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.replaceRootViewController(characterViewController, animated: true, completion: nil)
-                    }
+                onNext: { _ in
+                    let mainTabBarController = MainTabBarController()
+                    UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.replaceRootViewController(mainTabBarController, animated: true, completion: nil)
                 }
             )
             .disposed(by: disposeBag)
     }
     
-    fileprivate func setupContsraints(contentView: UIHostingController<NicknameView>) {
+    fileprivate func setupContsraints(contentView: UIHostingController<CharacterView>) {
         contentView.view.translatesAutoresizingMaskIntoConstraints = false
         contentView.view.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         contentView.view.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
@@ -42,4 +40,3 @@ class NicknameViewController: BaseKeyboardViewController {
         contentView.view.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
 }
-
