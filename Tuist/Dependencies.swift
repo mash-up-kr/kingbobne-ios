@@ -14,6 +14,7 @@ public extension Package {
     static let lottieios: Package = .package(url: "https://github.com/airbnb/lottie-ios.git", from: "3.4.0")
     static let kingfisher: Package = .package(url: "https://github.com/onevcat/Kingfisher.git", .upToNextMajor(from: "7.0.0"))
     static let panModal: Package = .package(url: "https://github.com/slackhq/PanModal.git", .exact("1.2.6"))
+    static let ypImagePicker: Package = .package(url: "https://github.com/Yummypets/YPImagePicker.git", .upToNextMajor(from: "5.0.0"))
 }
 
 //let dependencies = Dependencies(
@@ -41,7 +42,8 @@ let dependencies = Dependencies(
         .moyaRxSwift,
         .lottieios,
         .kingfisher,
-        .panModal
+        .panModal,
+        .ypImagePicker
     ],
     platforms: [.iOS]
 )
