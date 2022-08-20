@@ -54,19 +54,11 @@ final class SelectKkiLogViewController: UIViewController, PanModalPresentable {
         })
     }
     
-    private func presentImagePicker(completion: (()-> ())?) {
+    private func presentImagePicker(completion: (([YPMediaItem])-> ())?) {
         if let picker = picker {
             picker.didFinishPicking { [unowned picker] items, _ in
-                for item in items {
-                    switch item {
-                    case .photo(let photo):
-                        print(photo.image)
-                    case .video(let video):
-                        print(video)
-                    }
-                }
                 picker.dismiss(animated: false, completion: {
-                    completion?()
+                    completion?(items)
                 })
             }
             present(picker, animated: true, completion: nil)
@@ -75,7 +67,6 @@ final class SelectKkiLogViewController: UIViewController, PanModalPresentable {
     
     private func routeToPostSimpleKkilog() {
         guard let simpleKkilogViewController = UIStoryboard(name: "SimpleKkilog", bundle: nil).instantiateViewController(withIdentifier: "PostSimpleKkiLogViewController") as? PostSimpleKkiLogViewController else { return }
-
         simpleKkilogViewController.modalPresentationStyle = .overFullScreen
         self.present(simpleKkilogViewController, animated: true)
     }
@@ -88,13 +79,15 @@ final class SelectKkiLogViewController: UIViewController, PanModalPresentable {
     }
     
     @IBAction func onSimpleKkilog(_ sender: Any) {
-        presentImagePicker(completion: {
+        presentImagePicker(completion: { result in
+            print("onSimpleKkilog : \(result)")
             self.routeToPostSimpleKkilog()
         })
     }
     
     @IBAction func onDetailKkilog(_ sender: Any) {
-        presentImagePicker(completion: {
+        presentImagePicker(completion: { result in
+            print("onSimpleKkilog : \(result)")
             self.routeToPostDetailKkilog()
         })
     }
