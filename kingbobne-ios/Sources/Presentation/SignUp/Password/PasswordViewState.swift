@@ -1,0 +1,24 @@
+//
+//  AuthCodewViewState.swift
+//  kingbobne-ios
+//
+//  Created by victhor on 2022/08/20.
+//  Copyright © 2022 3999WG8MCQ. All rights reserved.
+//
+
+import Foundation
+import SwiftUI
+
+struct PasswordViewState {
+    var passwordLoadingState: LoadingState<Void> = LoadingState.initial
+    @State var password: String = ""
+    @State var passwordValidation: String = ""
+    var btnEnabled: Bool {
+        return password == passwordValidation &&
+        (PasswordViewState.MIN_PASSWORD...PasswordViewState.MAX_PASSWORD).contains(password.count)
+    }
+    
+    private static let MIN_PASSWORD = 8
+    private static let MAX_PASSWORD = 15
+}
+

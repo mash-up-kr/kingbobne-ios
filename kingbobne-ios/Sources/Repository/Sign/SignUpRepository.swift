@@ -12,8 +12,11 @@ import RxSwift
 protocol SignUpRepository {
     func validateEmail(email: String) -> Completable
     func requestAuthCode(email: String) -> Completable
+    func requestRegenerateAuthCode() -> Completable
     func authenticateCode(code: String) -> Completable
     func validateNickname(nickname: String) -> Completable
+    
+    func getCachedEmail() -> String
 }
 
 class SignUpResitoryCompanion {
@@ -43,12 +46,20 @@ fileprivate class SignUpRepositoryImpl: SignUpRepository {
             })
     }
     
+    func requestRegenerateAuthCode() -> Completable {
+        return authService.requestAuthCode(email: cachedEmail, type: AuthCodeTypeDto.SIGN_UP)
+    }
+    
     func authenticateCode(code: String) -> Completable {
         return authService.authenticateCode(email: cachedEmail, code: code, type: AuthCodeTypeDto.SIGN_UP)
     }
     
     func validateNickname(nickname: String) -> Completable {
         return authService.validateNickname(nickname: nickname)
+    }
+    
+    func getCachedEmail() -> String {
+        return cachedEmail
     }
     
 }

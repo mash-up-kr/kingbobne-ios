@@ -120,14 +120,15 @@ final class EmailValidationViewController: BaseKeyboardViewController {
             }
             .subscribe(
                 onNext: { _ in
-                    // TODO navigate input auth code
+                    let authCodeViewController = AuthCodeViewController()
+                    self.navigationController?.pushViewController(authCodeViewController, animated: true)
                 }
             )
             .disposed(by: disposeBag)
     }
     
     private func setUpUI() {
-        infoLabel.font = .setFont(style: .Headlineline1Regular)
+        infoLabel.font = .setFont(style: .Headline1Regular)
         infoLabel.textColor = .Custom.brownGray500
         infoLabel.text = "이메일을 입력해주세요"
         

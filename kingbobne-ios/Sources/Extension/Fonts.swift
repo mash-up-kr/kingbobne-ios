@@ -6,10 +6,11 @@
 //
 
 import UIKit
+import SwiftUI
 
 extension UIFont {
     enum Style: String {
-        case Headline1Bold, HeadlineBoldEnglish, Headlineline1Regular
+        case Headline1Bold, HeadlineBoldEnglish, Headline1Regular
         case Headline2Bold, Headline2Regular
         case Body1Bold, Body1Regular
         case Body2Bold, Body2Regular
@@ -24,7 +25,7 @@ extension UIFont {
             return UIFont(name: "Pretendard-Bold", size: 22)!
         case .HeadlineBoldEnglish:
             return UIFont(name: "Campton-BoldDEMO", size: 22)!
-        case .Headlineline1Regular:
+        case .Headline1Regular:
             return UIFont(name: "Pretendard-Regular", size: 22)!
         case .Headline2Bold:
             return UIFont(name: "Pretendard-Bold", size: 18)!
@@ -48,3 +49,8 @@ extension UIFont {
     }
 }
 
+public extension Font {
+  init(uiFont: UIFont) {
+    self = Font(uiFont as CTFont)
+  }
+}
