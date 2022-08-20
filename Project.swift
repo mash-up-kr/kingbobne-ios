@@ -6,6 +6,7 @@ public extension Package {
     static let moyaRxSwift: Package = .package(url: "https://github.com/Moya/Moya.git", from: "15.0.0")
     static let lottieios: Package = .package(url: "https://github.com/airbnb/lottie-ios.git", from: "3.4.0")
     static let kingfisher: Package = .package(url: "https://github.com/onevcat/Kingfisher.git", .upToNextMajor(from: "7.0.0"))
+    static let panModal: Package = .package(url: "https://github.com/slackhq/PanModal.git", .exact("1.2.6"))
 }
 
 let project = Project(
@@ -28,7 +29,8 @@ let project = Project(
         .rxSwift,
         .moyaRxSwift,
         .lottieios,
-        .kingfisher
+        .kingfisher,
+        .panModal
     ],
     settings: .settings(
         base: SettingsDictionary()
@@ -69,6 +71,7 @@ let project = Project(
                 .package(product: "Moya"),
                 .package(product: "RxMoya"),
                 .package(product: "Lottie"),
+                .package(product: "PanModal")
             ]
 //            settings: .settings(
 //                base: <#T##SettingsDictionary#>,
