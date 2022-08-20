@@ -54,14 +54,7 @@ final class SelectKkiLogViewController: UIViewController, PanModalPresentable {
         })
     }
     
-    func routeToPostSimpleKkilog() {
-        guard let simpleKkilogViewController = UIStoryboard(name: "SimpleKkilog", bundle: nil).instantiateViewController(withIdentifier: "PostSimpleKkiLogViewController") as? PostSimpleKkiLogViewController else { return }
-
-        simpleKkilogViewController.modalPresentationStyle = .overFullScreen
-        self.present(simpleKkilogViewController, animated: true)
-    }
-    
-    @IBAction func onSimpleKkilog(_ sender: Any) {
+    private func presentImagePicker(completion: (()-> ())?) {
         if let picker = picker {
             picker.didFinishPicking { [unowned picker] items, _ in
                 for item in items {
@@ -73,16 +66,36 @@ final class SelectKkiLogViewController: UIViewController, PanModalPresentable {
                     }
                 }
                 picker.dismiss(animated: false, completion: {
-                    self.routeToPostSimpleKkilog()
+                    completion?()
                 })
             }
             present(picker, animated: true, completion: nil)
         }
     }
     
-    @IBAction func onDetailKkilog(_ sender: Any) {
+    private func routeToPostSimpleKkilog() {
+        guard let simpleKkilogViewController = UIStoryboard(name: "SimpleKkilog", bundle: nil).instantiateViewController(withIdentifier: "PostSimpleKkiLogViewController") as? PostSimpleKkiLogViewController else { return }
+
+        simpleKkilogViewController.modalPresentationStyle = .overFullScreen
+        self.present(simpleKkilogViewController, animated: true)
+    }
+    
+    private func routeToPostDetailKkilog() {
         guard let detailKkilogViewController = UIStoryboard(name: "DetailKkilog", bundle: nil).instantiateViewController(withIdentifier: "PostDetailKkiLogViewController") as? PostDetailKkiLogViewController else { return }
+        
         detailKkilogViewController.modalPresentationStyle = .overFullScreen
         self.present(detailKkilogViewController, animated: true)
+    }
+    
+    @IBAction func onSimpleKkilog(_ sender: Any) {
+        presentImagePicker(completion: {
+            self.routeToPostSimpleKkilog()
+        })
+    }
+    
+    @IBAction func onDetailKkilog(_ sender: Any) {
+        presentImagePicker(completion: {
+            self.routeToPostDetailKkilog()
+        })
     }
 }
