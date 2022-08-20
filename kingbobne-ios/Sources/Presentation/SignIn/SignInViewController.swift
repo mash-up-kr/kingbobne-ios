@@ -8,6 +8,7 @@
 import UIKit
 import RxCocoa
 import RxSwift
+import SwiftUI
 
 final class SignInViewController: BaseKeyboardViewController {
 
@@ -73,6 +74,20 @@ final class SignInViewController: BaseKeyboardViewController {
     private func observeEmailState() {
         observeEmailValidatedState()
         observeEmailErrorState()
+        
+        viewModel.observeViewState()
+            .map { viewState in
+                viewState.emailState
+            }
+            .filter { emailState in
+                emailState.message == ValidationState.VALIDATION_FORMAT_ERROR_MESSAGE
+            }
+            .subscribe(
+                onNext: { emailState in
+                    self.setUIEmailInitialized()
+                }
+            )
+            .disposed(by: disposeBag)
     }
     
     private func observeEmailErrorState() {
@@ -83,12 +98,15 @@ final class SignInViewController: BaseKeyboardViewController {
             .filter { emailState in
                 !emailState.validated && emailState.message != nil
             }
+            .filter { emailState in
+                emailState.message != ValidationState.VALIDATION_FORMAT_ERROR_MESSAGE
+            }
             .map { emailState in
                 emailState.message!
             }
             .subscribe(
                 onNext: { message in
-                    // TODO show email error message
+                    self.setUIEmailError(errorMessage: message)
                 }
             )
             .disposed(by: disposeBag)
@@ -101,8 +119,7 @@ final class SignInViewController: BaseKeyboardViewController {
             }
             .subscribe(
                 onNext: { _ in
-                    // TODO resolve error messages and state
-                    print("email validated")
+                    self.setUIEmailValidated()
                 }
             )
             .disposed(by: disposeBag)
@@ -111,6 +128,20 @@ final class SignInViewController: BaseKeyboardViewController {
     private func observePasswordState() {
         observePasswordValidatedState()
         observePasswordErrorState()
+        
+        viewModel.observeViewState()
+            .map { viewState in
+                viewState.passwordState
+            }
+            .filter { passwordState in
+                passwordState.message == ValidationState.VALIDATION_FORMAT_ERROR_MESSAGE
+            }
+            .subscribe(
+                onNext: { emailState in
+                    self.setUIPasswordInitialized()
+                }
+            )
+            .disposed(by: disposeBag)
     }
     
     private func observePasswordErrorState() {
@@ -121,12 +152,15 @@ final class SignInViewController: BaseKeyboardViewController {
             .filter { passwordState in
                 !passwordState.validated && passwordState.message != nil
             }
+            .filter { passwordState in
+                passwordState.message != ValidationState.VALIDATION_FORMAT_ERROR_MESSAGE
+            }
             .map { passwordState in
                 passwordState.message!
             }
             .subscribe(
                 onNext: { message in
-                    // TODO show password error message
+                    self.setUIPasswordError(errorMessage: message)
                 }
             )
             .disposed(by: disposeBag)
@@ -139,8 +173,7 @@ final class SignInViewController: BaseKeyboardViewController {
             }
             .subscribe(
                 onNext: { _ in
-                    // TODO resolve error messages and state
-                    print("password validated")
+                    self.setUIPasswordValidated()
                 }
             )
             .disposed(by: disposeBag)
@@ -199,6 +232,7 @@ final class SignInViewController: BaseKeyboardViewController {
         emailTextField.placeholder = "이메일 입력"
         emailTextField.textContentType = .emailAddress
         
+        
         passwordTextField.placeholder = "비밀번호 입력"
         passwordTextField.textContentType = .password
         passwordTextField.isSecureTextEntry = true
@@ -206,16 +240,70 @@ final class SignInViewController: BaseKeyboardViewController {
         infoLabel.text = "이메일 혹은 비밀번호가 맞지 않습니다."
         infoLabel.font = .setFont(style: .CaptionRegular)
         infoLabel.textColor = .Custom.redError
+        infoLabel.isHidden = true
         
         dividerView.forEach({
             $0.backgroundColor = .Custom.brownGray100
         })
         
-        emailCheckIcon.image = .ic_correct_20
-        passwordCheckIcon.image = .ic_correct_20
+        emailCheckIcon.isHidden = true
+        passwordCheckIcon.isHidden = true
         
         descriptionButton.setButtonStyle(text: "비밀번호를 잊어버렸어요", fontStyle: .Body2Regular, fontColor: .Custom.brownGray300)
         completionButton.setButtonStyle(text: "완료", fontStyle: .Body1Bold, fontColor: .Custom.brownGray300, buttonColor: .Custom.brownGray100)
+    }
+    
+
+    private func setUIEmailInitialized() {
+        emailCheckIcon.isHidden = true
+        
+        // TODO divider color init
+    }
+    
+    private func setUIEmailValidated() {
+        emailCheckIcon.image = .ic_correct_20
+        emailCheckIcon.isHidden = false
+        
+        emailTextField.layer.borderColor = UIColor.Custom.brownGray100.cgColor
+    }
+    
+    private func setUIEmailError(errorMessage: String) {
+        if errorMessage.isEmpty {
+            emailCheckIcon.isHidden = true
+            emailTextField.layer.borderColor = UIColor.Custom.brownGray100.cgColor
+            // TODO textfield underline setting
+        } else {
+            emailCheckIcon.image = .ic_error_20
+            emailCheckIcon.isHidden = false
+            emailTextField.layer.borderColor = UIColor.Custom.redError.cgColor
+            // TODO textfield underline setting
+        }
+    }
+    
+    private func setUIPasswordInitialized() {
+        passwordCheckIcon.isHidden = true
+        
+        // TODO divider color init
+    }
+    
+    private func setUIPasswordValidated() {
+        passwordCheckIcon.image = .ic_correct_20
+        passwordCheckIcon.isHidden = false
+        
+        passwordTextField.layer.borderColor = UIColor.Custom.brownGray100.cgColor
+    }
+    
+    private func setUIPasswordError(errorMessage: String) {
+        if errorMessage.isEmpty {
+            passwordCheckIcon.isHidden = true
+            // TODO textfield underline setting
+            passwordTextField.layer.borderColor = UIColor.Custom.brownGray100.cgColor
+        } else {
+            passwordCheckIcon.image = .ic_error_20
+            passwordCheckIcon.isHidden = false
+            // TODO textfield underline setting
+            passwordTextField.layer.borderColor = UIColor.Custom.redError.cgColor
+        }
     }
     
     override func keyboardWillShow(notification: NSNotification) {

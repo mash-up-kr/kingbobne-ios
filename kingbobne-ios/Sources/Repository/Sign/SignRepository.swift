@@ -33,7 +33,6 @@ internal class SignRepositoryImpl: SignRepository {
     func signIn(email: String, password: String) -> Completable {
         return authService.signIn(email: email, password: password)
             .do(onSuccess: { accessToken in
-                // TODO save access token to shared area
                 accessToken.save()
             })
             .asCompletable()
