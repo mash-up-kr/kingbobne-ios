@@ -8,7 +8,7 @@
 import Foundation
 
 class BaseUrl {
-    static let value: URL = URL(string: "https://kki-log-api.herokuapp.com/api")!
+    static let value: URL = URL(string: "http://kki-log-api.turastory.com")!
     
     private init() { }
 }

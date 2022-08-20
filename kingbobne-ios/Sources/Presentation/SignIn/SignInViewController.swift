@@ -10,7 +10,7 @@ import RxCocoa
 import RxSwift
 import SwiftUI
 
-class SignInViewController: UIViewController {
+final class SignInViewController: BaseKeyboardViewController {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionButton: ClearButton!
@@ -31,12 +31,6 @@ class SignInViewController: UIViewController {
         super.viewDidLoad()
         setUpUI()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChangeFrame), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
-        self.view.addGestureRecognizer(tapGesture)
-        
         observeEmailTextFieldChanged()
         observePasswordTextFieldChanged()
         observeCompletionButtonClicked()
@@ -45,10 +39,6 @@ class SignInViewController: UIViewController {
         observePasswordState()
         observeSignInButtonActivated()
         observeSignInState()
-    }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self)
     }
     
     private func observeEmailTextFieldChanged() {
@@ -235,10 +225,6 @@ class SignInViewController: UIViewController {
         // TODO
     }
     
-    @objc func handleTap() {
-        view.endEditing(true)
-    }
-    
     func setUpUI() {
         titleLabel.font = .setFont(style: .Headlineline1Regular)
         titleLabel.textColor = .Custom.brownGray500
@@ -267,6 +253,7 @@ class SignInViewController: UIViewController {
         completionButton.setButtonStyle(text: "완료", fontStyle: .Body1Bold, fontColor: .Custom.brownGray300, buttonColor: .Custom.brownGray100)
     }
     
+
     private func setUIEmailInitialized() {
         emailCheckIcon.isHidden = true
         
@@ -319,32 +306,23 @@ class SignInViewController: UIViewController {
         }
     }
     
-    
-    @objc private func keyboardWillChangeFrame(notification: NSNotification) {
-        let screenHeight = UIScreen.main.bounds.height
-        let targetFrame = (notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
-        var targetHeight = targetFrame!.size.height
-        targetHeight -= view.safeAreaInsets.bottom
-        var val = targetHeight + 30
-        if targetFrame!.origin.y == screenHeight { val = 0 }
+    override func keyboardWillShow(notification: NSNotification) {
+        guard let targetHeight = getKeyboardHeight(notification: notification) else { return }
         
-        let curve = notification.userInfo?[UIResponder.keyboardAnimationCurveUserInfoKey] as! UInt
-        let duration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as! Double
-        let curveOpt = UIView.AnimationOptions(rawValue: curve << 16)
-            
-        UIView.animate(withDuration: duration, delay: 0, options: [curveOpt]) {
-            self.completionButtonBottomConstraint.constant = val
+        let keyboardAnim = getKeyboardAnimationValue(notification: notification)
+        if let duration = keyboardAnim.duration, let curveOpt = keyboardAnim.curveOption {
+            UIView.animate(withDuration: duration, delay: 0, options: curveOpt, animations: {
+                self.completionButtonBottomConstraint.constant = targetHeight + 30
+            })
         }
-        
     }
-
-    @objc func keyboardWillHide(notification: NSNotification) {
-        let curve = notification.userInfo?[UIResponder.keyboardAnimationCurveUserInfoKey] as! UInt
-        let duration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as! Double
-        let curveOpt = UIView.AnimationOptions(rawValue: curve << 16)
-            
-        UIView.animate(withDuration: duration, delay: 0, options: [curveOpt]) {
-            self.completionButtonBottomConstraint.constant = 30
+    
+    override func keyboardWillHide(notification: NSNotification) {
+        let keyboardAnim = getKeyboardAnimationValue(notification: notification)
+        if let duration = keyboardAnim.duration, let curveOpt = keyboardAnim.curveOption {
+            UIView.animate(withDuration: duration, delay: 0, options: curveOpt, animations: {
+                self.completionButtonBottomConstraint.constant = 30
+            })
         }
     }
 

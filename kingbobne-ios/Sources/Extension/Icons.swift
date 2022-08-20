@@ -19,5 +19,7 @@ extension UIImage {
     public static let ic_recipe_disable_44 = UIImage(named: "ic_recipe_disable_44")!
     public static let ic_home_active_44 = UIImage(named: "ic_home_active_44")!
     public static let ic_home_disable_44 = UIImage(named: "ic_home_disable_44")!
+    public static let ic_mypage_44 = UIImage(named: "ic_mypage_44")!
+    public static let ic_alarm_44 = UIImage(named: "ic_alarm_44")!
     
 }
