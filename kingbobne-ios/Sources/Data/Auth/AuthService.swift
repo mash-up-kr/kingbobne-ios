@@ -84,7 +84,7 @@ class AuthCompanion {
 
 fileprivate class AuthServiceImpl: AuthService, Networkable {
     
-    var provider: MoyaProvider<AuthApi> = MoyaProvider<AuthApi>()
+    var provider: MoyaProvider<AuthApi> = MoyaProvider<AuthApi>(plugins: [RequestLoggingPlugin()])
  
     func signIn(email: String, password: String) -> Single<AccessToken> {
         return provider.rx.request(.signIn(body: ReqSignIn(email: email, password: password)))

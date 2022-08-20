@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum AuthCodeTypeDto: Codable {
-    case SIGN_UP
-    case CHANGE_PASSWORD
+enum AuthCodeTypeDto: String, Codable {
+    case SIGN_UP = "SIGN_UP"
+    case CHANGE_PASSWORD = "CHANGE_PASSWORD"
 }

@@ -10,4 +10,8 @@ import Foundation
 
 struct EmailValidationViewState: Equatable {
     var emailState: ValidationState = ValidationState()
+    var authCodeLoadingState: LoadingState<Void> = LoadingState.initial
+    var btnReuqestAuthEnabled: Bool {
+        return emailState.validated
+    }
 }

@@ -17,8 +17,8 @@ protocol EmailValidationViewModel {
 
 class EmailValidationViewModelCompanion {
     static func newInstance() -> EmailValidationViewModel {
-        let signRepository = SignRepositoryCompanion.getInstance()
-        return EmailValidationViewModelImpl(signRepository: signRepository)
+        let signUpRepository = SignUpResitoryCompanion.getInstance()
+        return EmailValidationViewModelImpl(signUpRepository: signUpRepository)
     }
 }
 
@@ -28,15 +28,15 @@ fileprivate class EmailValidationViewModelImpl: EmailValidationViewModel {
     
     private let disposeBag: DisposeBag = DisposeBag()
     
-    private let signRepository: SignRepository
-    private let signUpViewStateSubject = BehaviorSubject<EmailValidationViewState>(value: EmailValidationViewState())
+    private let signUpRepository: SignUpRepository
+    private let emailValidationViewStateSubject = BehaviorSubject<EmailValidationViewState>(value: EmailValidationViewState())
     
-    init(signRepository: SignRepository) {
-        self.signRepository = signRepository
+    init(signUpRepository: SignUpRepository) {
+        self.signUpRepository = signUpRepository
     }
     
     func observeViewState() -> Observable<EmailValidationViewState> {
-        return signUpViewStateSubject.distinctUntilChanged()
+        return emailValidationViewStateSubject.distinctUntilChanged()
             .observe(on: MainScheduler.instance)
     }
     
@@ -44,15 +44,15 @@ fileprivate class EmailValidationViewModelImpl: EmailValidationViewModel {
         do {
             let regex = try NSRegularExpression(pattern: EmailValidationViewModelImpl.REGEX_EMAIL)
             let results = regex.matches(in: email, range: NSRange(location: 0, length: email.count))
-            var viewState = try self.signUpViewStateSubject.value()
+            var viewState = try self.emailValidationViewStateSubject.value()
             if results.isEmpty {
                 viewState.emailState.validated = false
-                viewState.emailState.message = "Invalid email format"
-                signUpViewStateSubject.onNext(viewState)
+                viewState.emailState.message = ValidationState.VALIDATION_FORMAT_ERROR_MESSAGE
+                emailValidationViewStateSubject.onNext(viewState)
             } else {
                 viewState.emailState.validated = true
                 viewState.emailState.message = nil
-                signUpViewStateSubject.onNext(viewState)
+                emailValidationViewStateSubject.onNext(viewState)
             }
         } catch {
             
@@ -60,36 +60,41 @@ fileprivate class EmailValidationViewModelImpl: EmailValidationViewModel {
     }
     
     func requestAuthCodeBy(email: String) {
-        
-        signRepository.signUpEmail(email: email)
-            .subscribe(on: ConcurrentDispatchQueueScheduler(qos: .background))
+        signUpRepository.validateEmail(email: email)
+            .andThen(signUpRepository.requestAuthCode(email: email))
             .do(
+                onError: { error in
+                    
+                    print("requestAuthCode error" + error.localizedDescription)
+                    
+                },
+                onCompleted: {
+                    print("requestAuthCode success")
+                },
                 onSubscribe: {
                     do {
-                        var viewState = try
-                            self.signUpViewStateSubject.value()
-                        self.signUpViewStateSubject.onNext(viewState)
-                    } catch {
-                        
-                    }
+                        var viewState = try self.emailValidationViewStateSubject.value()
+                        viewState.authCodeLoadingState = LoadingState.loading
+                        self.emailValidationViewStateSubject.onNext(viewState)
+                    } catch {}
                 }
             )
             .subscribe(
                 onCompleted: {
                     do {
-                        var viewState = try
-                            self.signUpViewStateSubject.value()
-                        self.signUpViewStateSubject.onNext(viewState)
+                        var viewState = try self.emailValidationViewStateSubject.value()
+                        viewState.authCodeLoadingState = LoadingState.success(data: ())
+                        self.emailValidationViewStateSubject.onNext(viewState)
                     } catch {}
                 }, onError: { error in
                     do {
-                        var viewState = try
-                            self.signUpViewStateSubject.value()
-                        self.signUpViewStateSubject.onNext(viewState)
+                        var viewState = try self.emailValidationViewStateSubject.value()
+                        viewState.authCodeLoadingState = LoadingState.error(error: error)
+                        self.emailValidationViewStateSubject.onNext(viewState)
                     } catch {}
                 }
-            )
-            .disposed(by: disposeBag)
+            ).disposed(by: disposeBag)
     }
     
 }
+

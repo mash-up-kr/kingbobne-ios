@@ -28,6 +28,7 @@ final class EmailValidationViewController: BaseKeyboardViewController {
         
         observeEmailTextFieldChanged()
         observeNextButtonClicked()
+        observeAuthCodeRequested()
         
         observeEmailState()
     }
@@ -51,6 +52,23 @@ final class EmailValidationViewController: BaseKeyboardViewController {
     private func observeEmailState() {
         observeEmailValidatedState()
         observeEmaiilErrorState()
+        
+        viewModel.observeViewState()
+            .map { viewState in
+                viewState.btnReuqestAuthEnabled
+            }
+            .subscribe(
+                onNext: { btnEnabled in
+                    self.nextButton.isEnabled = btnEnabled
+                    if btnEnabled {
+                        self.nextButton.setButtonStyle(text: "다음", fontStyle: .Body1Bold, fontColor: .white, buttonColor: .Custom.brandOrange)
+                    } else {
+                        self.nextButton.setButtonStyle(text: "다음", fontStyle: .Body1Bold, fontColor: .Custom.brownGray300, buttonColor: .Custom.brownGray100)
+                    }
+                    
+                }
+            )
+            .disposed(by: disposeBag)
     }
     
     private func observeEmaiilErrorState() {
@@ -66,7 +84,7 @@ final class EmailValidationViewController: BaseKeyboardViewController {
             }
             .subscribe(
                 onNext: { message in
-                    // TODO show email error message
+                    self.descriptionLabel.text = "올바른 이메일 형식을 입력해주세요.\n예시) KKILOG@Gmail.com"
                 }
             )
             .disposed(by: disposeBag)
@@ -79,10 +97,8 @@ final class EmailValidationViewController: BaseKeyboardViewController {
             }
             .subscribe(
                 onNext: { _ in
-                    self.descriptionLabel.text = "입력한 이메일로 인증번호가 전송됩니다"
-                },
-                onError: { _ in
-                    self.descriptionLabel.text = "올바른 이메일 형식을 입력해주세요.\n예시) KKILOG@Gmail.com"
+                    // TODO set email validate
+                    self.descriptionLabel.text = ""
                 }
             )
             .disposed(by: disposeBag)
@@ -92,7 +108,21 @@ final class EmailValidationViewController: BaseKeyboardViewController {
         nextButton.rx.tap
             .bind {
                 self.viewModel.requestAuthCodeBy(email: self.emailTextField.text ?? "")
+                self.descriptionLabel.text = "입력한 이메일로 인증번호가 전송됩니다"
             }
+            .disposed(by: disposeBag)
+    }
+    
+    private func observeAuthCodeRequested() {
+        viewModel.observeViewState()
+            .filter { viewState in
+                viewState.authCodeLoadingState == .success(data: ())
+            }
+            .subscribe(
+                onNext: { _ in
+                    // TODO navigate input auth code
+                }
+            )
             .disposed(by: disposeBag)
     }
     
