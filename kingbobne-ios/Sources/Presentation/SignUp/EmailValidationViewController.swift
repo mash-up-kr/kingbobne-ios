@@ -91,7 +91,7 @@ final class EmailValidationViewController: BaseKeyboardViewController {
     private func observeNextButtonClicked() {
         nextButton.rx.tap
             .bind {
-                self.viewModel.signUpEmail(email: self.emailTextField.text ?? "")
+                self.viewModel.requestAuthCodeBy(email: self.emailTextField.text ?? "")
             }
             .disposed(by: disposeBag)
     }

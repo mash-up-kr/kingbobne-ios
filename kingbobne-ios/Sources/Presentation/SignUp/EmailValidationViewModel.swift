@@ -11,7 +11,7 @@ import RxSwift
 
 protocol EmailValidationViewModel {
     func validateEmail(email: String)
-    func signUpEmail(email: String)
+    func requestAuthCodeBy(email: String)
     func observeViewState() -> Observable<EmailValidationViewState>
 }
 
@@ -59,7 +59,8 @@ fileprivate class EmailValidationViewModelImpl: EmailValidationViewModel {
         }
     }
     
-    func signUpEmail(email: String) {
+    func requestAuthCodeBy(email: String) {
+        
         signRepository.signUpEmail(email: email)
             .subscribe(on: ConcurrentDispatchQueueScheduler(qos: .background))
             .do(
