@@ -21,5 +21,6 @@ extension UIImage {
     public static let ic_home_disable_44 = UIImage(named: "ic_home_disable_44")!
     public static let ic_mypage_44 = UIImage(named: "ic_mypage_44")!
     public static let ic_alarm_44 = UIImage(named: "ic_alarm_44")!
+    public static let ic_xclose_44 = UIImage(named: "ic_xclose_44")!
     
 }
