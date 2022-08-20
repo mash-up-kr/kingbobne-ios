@@ -10,7 +10,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-final class SignUpViewController: BaseKeyboardViewController {
+final class EmailValidationViewController: BaseKeyboardViewController {
 
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var emailTextField: UITextField!
@@ -19,7 +19,7 @@ final class SignUpViewController: BaseKeyboardViewController {
     @IBOutlet weak var nextButton: FullButton!
     @IBOutlet weak var nextButtonBottomConstraint: NSLayoutConstraint!
     
-    private let viewModel: SignUpViewModel = SignUpViewModelCompanion.newInstance()
+    private let viewModel: EmailValidationViewModel = EmailValidationViewModelCompanion.newInstance()
     private let disposeBag: DisposeBag = DisposeBag()
     
     override func viewDidLoad() {

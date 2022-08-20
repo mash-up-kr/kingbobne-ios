@@ -9,40 +9,40 @@
 import Foundation
 import RxSwift
 
-protocol SignUpViewModel {
+protocol EmailValidationViewModel {
     func validateEmail(email: String)
     func signUpEmail(email: String)
-    func observeViewState() -> Observable<SignUpViewState>
+    func observeViewState() -> Observable<EmailValidationViewState>
 }
 
-class SignUpViewModelCompanion {
-    static func newInstance() -> SignUpViewModel {
+class EmailValidationViewModelCompanion {
+    static func newInstance() -> EmailValidationViewModel {
         let signRepository = SignRepositoryCompanion.getInstance()
-        return SignUpViewModelImpl(signRepository: signRepository)
+        return EmailValidationViewModelImpl(signRepository: signRepository)
     }
 }
 
-fileprivate class SignUpViewModelImpl: SignUpViewModel {
+fileprivate class EmailValidationViewModelImpl: EmailValidationViewModel {
     
     private static let REGEX_EMAIL = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$"
     
     private let disposeBag: DisposeBag = DisposeBag()
     
     private let signRepository: SignRepository
-    private let signUpViewStateSubject = BehaviorSubject<SignUpViewState>(value: SignUpViewState())
+    private let signUpViewStateSubject = BehaviorSubject<EmailValidationViewState>(value: EmailValidationViewState())
     
     init(signRepository: SignRepository) {
         self.signRepository = signRepository
     }
     
-    func observeViewState() -> Observable<SignUpViewState> {
+    func observeViewState() -> Observable<EmailValidationViewState> {
         return signUpViewStateSubject.distinctUntilChanged()
             .observe(on: MainScheduler.instance)
     }
     
     func validateEmail(email: String) {
         do {
-            let regex = try NSRegularExpression(pattern: SignUpViewModelImpl.REGEX_EMAIL)
+            let regex = try NSRegularExpression(pattern: EmailValidationViewModelImpl.REGEX_EMAIL)
             let results = regex.matches(in: email, range: NSRange(location: 0, length: email.count))
             var viewState = try self.signUpViewStateSubject.value()
             if results.isEmpty {

@@ -114,7 +114,6 @@ fileprivate class AuthServiceImpl: AuthService, Networkable {
         return provider.rx.request(.validateEmail(email: email))
             .filterSuccessfulStatusCodes()
             .asCompletable()
-            
     }
     
     func requestAuthCode(email: String, type: AuthCodeTypeDto) -> Completable {

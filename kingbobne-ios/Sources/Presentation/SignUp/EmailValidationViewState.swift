@@ -8,6 +8,6 @@
 
 import Foundation
 
-struct SignUpViewState: Equatable {
+struct EmailValidationViewState: Equatable {
     var emailState: ValidationState = ValidationState()
 }
