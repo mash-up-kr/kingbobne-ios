@@ -15,10 +15,13 @@ protocol SignUpRepository {
     func requestRegenerateAuthCode() -> Completable
     func authenticateCode(code: String) -> Completable
     func validateNickname(nickname: String) -> Completable
+    func signUp(nickname: String) -> Completable
     
     func getCachedEmail() -> String
     func cachePassword(_ password: String)
     func clearPasswordCache()
+    
+    func getCharacterType() -> CharacterType
 }
 
 class SignUpResitoryCompanion {
@@ -33,6 +36,7 @@ fileprivate class SignUpRepositoryImpl: SignUpRepository {
     private let authService: AuthService
     private var cachedEmail: String = ""
     private var cachedPassword: String = ""
+    private var cachedCharacterType: CharacterType = .BROCCOLI
     
     init(authService: AuthService) {
         self.authService = authService
@@ -61,6 +65,15 @@ fileprivate class SignUpRepositoryImpl: SignUpRepository {
         return authService.validateNickname(nickname: nickname)
     }
     
+    func signUp(nickname: String) -> Completable {
+        return authService.signUp(email: cachedEmail, password: cachedPassword, nickname: nickname)
+            .do(onSuccess: { characterType in
+                self.cachedCharacterType = characterType
+            })
+            .asCompletable()
+        
+    }
+    
     func getCachedEmail() -> String {
         return cachedEmail
     }
@@ -71,5 +84,9 @@ fileprivate class SignUpRepositoryImpl: SignUpRepository {
     
     func clearPasswordCache() {
         self.cachedPassword = ""
+    }
+    
+    func getCharacterType() -> CharacterType {
+        return cachedCharacterType
     }
 }

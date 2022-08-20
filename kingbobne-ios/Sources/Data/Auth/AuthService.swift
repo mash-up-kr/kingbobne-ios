@@ -69,7 +69,7 @@ extension AuthApi : TargetType {
 
 protocol AuthService: Service {
     func signIn(email: String, password: String) -> Single<AccessToken>
-    func signUp(email: String, password: String, nickname: String) -> Single<AccessToken>
+    func signUp(email: String, password: String, nickname: String) -> Single<CharacterType>
     func validateEmail(email: String) -> Completable
     func requestAuthCode(email: String, type: AuthCodeTypeDto) -> Completable
     func authenticateCode(email: String, code: String, type: AuthCodeTypeDto) -> Completable
@@ -98,12 +98,13 @@ fileprivate class AuthServiceImpl: AuthService, Networkable {
             }
     }
     
-    func signUp(email: String, password: String, nickname: String) -> Single<AccessToken> {
+    func signUp(email: String, password: String, nickname: String) -> Single<CharacterType> {
         return provider.rx.request(.signUp(body: ReqSignUp(email: email, password: password, nickname: nickname)))
             .flatMap { response in
                 do {
-                    let accessToken = try response.convert()
-                    return Single.just(accessToken)
+                    let respSignUp = try response.map(RespSignUp.self)
+                    AccessToken(token: respSignUp.token).save()
+                    return Single.just(respSignUp.character.convert())
                 } catch {
                     return Single.error(error)
                 }
@@ -146,5 +147,15 @@ fileprivate extension Response {
 fileprivate extension RespAccessToken {
     func convert() -> AccessToken {
         return AccessToken(token: accessToken)
+    }
+}
+
+fileprivate extension CharacterTypeDto {
+    func convert() -> CharacterType {
+        switch self {
+        case .BROCCOLI: return CharacterType.BROCCOLI
+        case .CARROT: return CharacterType.CARROT
+        case .GREEN_ONION: return CharacterType.GREEN_ONION
+        }
     }
 }

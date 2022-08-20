@@ -1,8 +1,8 @@
 //
-//  AuthCodeViewController.swift
+//  NicknameViewController.swift
 //  kingbobne-ios
 //
-//  Created by victhor on 2022/08/20.
+//  Created by victhor on 2022/08/21.
 //  Copyright © 2022 3999WG8MCQ. All rights reserved.
 //
 
@@ -10,37 +10,30 @@ import UIKit
 import SwiftUI
 import RxSwift
 
-class PasswordViewController: BaseKeyboardViewController {
-    private let viewModel = PasswordViewModel()
+class NicknameViewController: BaseKeyboardViewController {
+    private let viewModel = NicknameViewModel()
     
     private let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
-        let contentView = UIHostingController(rootView: PasswordView(viewModel: self.viewModel))
+        let contentView = UIHostingController(rootView: NicknameView(viewModel: self.viewModel))
         contentView.loadView()
         addChild(contentView)
         view.addSubview(contentView.view)
         setupContsraints(contentView: contentView)
         
-        guard let navigationController = self.navigationController else {
-            return
-        }
-        navigationController.viewControllers.remove(at: navigationController.viewControllers.count - 2)
-        
-        viewModel.observePasswordSaved()
-            .filter { passwordSaved in
-                passwordSaved
-            }
+        viewModel.observeSignUpLoadingState()
             .subscribe(
-                onNext: { _ in
-                    let nicknameViewController = NicknameViewController()
-                    self.navigationController?.pushViewController(nicknameViewController, animated: true)
+                onNext: { loadingState in
+                    if (loadingState == .success(data: ())) {
+                        // TODO navigate character controller
+                    }
                 }
             )
             .disposed(by: disposeBag)
     }
     
-    fileprivate func setupContsraints(contentView: UIHostingController<PasswordView>) {
+    fileprivate func setupContsraints(contentView: UIHostingController<NicknameView>) {
         contentView.view.translatesAutoresizingMaskIntoConstraints = false
         contentView.view.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         contentView.view.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
