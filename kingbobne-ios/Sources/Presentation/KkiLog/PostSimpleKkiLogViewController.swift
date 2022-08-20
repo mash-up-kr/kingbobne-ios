@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PostKkiLogViewController: UIViewController {
+class PostSimpleKkiLogViewController: UIViewController {
     
     private let viewModel = PostKkiLogViewModelCompanion.newInstance()
 

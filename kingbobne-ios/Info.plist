@@ -3,14 +3,16 @@
 <plist version="1.0">
 <dict>
     <key>NSAppTransportSecurity</key>
-
     <dict>
-
-        <key>NSAllowsArbitraryLoads</key>
-
-        <true/>
-
+    <key>NSAllowsArbitraryLoads</key>
+    <true/>
     </dict>
+    <key>NSCameraUsageDescription</key>
+    <string>CameraUsage</string>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>PhotoLibraryUsage</string>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>MicrophoneUsage</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
