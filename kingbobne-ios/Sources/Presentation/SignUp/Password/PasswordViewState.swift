@@ -10,15 +10,15 @@ import Foundation
 import SwiftUI
 
 struct PasswordViewState {
-    var passwordLoadingState: LoadingState<Void> = LoadingState.initial
-    @State var password: String = ""
-    @State var passwordValidation: String = ""
-    var btnEnabled: Bool {
-        return password == passwordValidation &&
-        (PasswordViewState.MIN_PASSWORD...PasswordViewState.MAX_PASSWORD).contains(password.count)
-    }
-    
     private static let MIN_PASSWORD = 8
     private static let MAX_PASSWORD = 15
+    
+    var password: String = ""
+    var passwordValidation: String = ""
+    var btnEnabled: Bool {
+        return password == passwordValidation && (PasswordViewState.MIN_PASSWORD...PasswordViewState.MAX_PASSWORD).contains(password.count)
+    }
+    
+    var passwordSaved: Bool = false
 }
 

@@ -17,6 +17,8 @@ protocol SignUpRepository {
     func validateNickname(nickname: String) -> Completable
     
     func getCachedEmail() -> String
+    func cachePassword(_ password: String)
+    func clearPasswordCache()
 }
 
 class SignUpResitoryCompanion {
@@ -30,6 +32,7 @@ class SignUpResitoryCompanion {
 fileprivate class SignUpRepositoryImpl: SignUpRepository {
     private let authService: AuthService
     private var cachedEmail: String = ""
+    private var cachedPassword: String = ""
     
     init(authService: AuthService) {
         self.authService = authService
@@ -62,4 +65,11 @@ fileprivate class SignUpRepositoryImpl: SignUpRepository {
         return cachedEmail
     }
     
+    func cachePassword(_ password: String) {
+        self.cachedPassword = password
+    }
+    
+    func clearPasswordCache() {
+        self.cachedPassword = ""
+    }
 }

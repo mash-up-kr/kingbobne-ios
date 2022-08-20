@@ -10,6 +10,7 @@ import Foundation
 import RxSwift
 
 class PasswordViewModel : ObservableObject {
+    
     private let signUpRepository: SignUpRepository
     private let disposeBag: DisposeBag = DisposeBag()
     
@@ -21,9 +22,23 @@ class PasswordViewModel : ObservableObject {
         self.signUpRepository = SignUpResitoryCompanion.getInstance()
     }
     
-    func observeViewState() -> Observable<PasswordViewState> {
-        return viewStateSubject
+    func observePasswordSaved() -> Observable<Bool> {
+        return viewStateSubject.map { viewState in
+            viewState.passwordSaved
+        }.distinctUntilChanged()
     }
     
+    func savePassword() {
+        signUpRepository.cachePassword(viewState.password)
+        
+        viewState.passwordSaved = true
+        viewStateSubject.onNext(viewState)
+    }
     
+    func clearPassword() {
+        signUpRepository.clearPasswordCache()
+        
+        viewState.passwordSaved = false
+        viewStateSubject.onNext(viewState)
+    }
 }

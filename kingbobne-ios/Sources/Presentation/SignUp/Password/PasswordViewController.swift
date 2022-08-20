@@ -27,13 +27,12 @@ class PasswordViewController: BaseKeyboardViewController {
         }
         navigationController.viewControllers.remove(at: navigationController.viewControllers.count - 2)
         
-        viewModel.observeViewState()
-            .filter { viewState in
-                viewState.passwordLoadingState == .success(data: ())
+        viewModel.observePasswordSaved()
+            .filter { passwordSaved in
+                passwordSaved
             }
             .subscribe(
-                onNext: { viewState in
-                    // TODO navigate nickname view controller
+                onNext: { _ in
                     print("navigate nickname view controller")
                 }
             )
@@ -48,3 +47,4 @@ class PasswordViewController: BaseKeyboardViewController {
         contentView.view.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
 }
+

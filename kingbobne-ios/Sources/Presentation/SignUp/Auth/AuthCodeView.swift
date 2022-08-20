@@ -20,7 +20,7 @@ struct AuthCodeView: View {
             HStack {
                 TextField("인증번호 6자리", text: $viewModel.viewState.authCode)
                     .font(Font(uiFont: UIFont.setFont(style: .Body1Regular)))
-                    .foregroundColor(Color(UIColor.Custom.brownGray200))
+                    .foregroundColor(Color(UIColor.Custom.brownGray500))
                     .keyboardType(.decimalPad)
                 
                 Spacer()
