@@ -53,7 +53,7 @@ let project = Project(
             product: .app,
             // organization name 이 변경되면 여기도 변경되어야함
             bundleId: "bigstark.kingbobne",
-            deploymentTarget: .iOS(targetVersion: "13.0", devices: .iphone),
+            deploymentTarget: .iOS(targetVersion: "14.0", devices: .iphone),
             infoPlist: "kingbobne-ios/Info.plist",
             sources: .init(globs: [
                 "kingbobne-ios/Sources/**",

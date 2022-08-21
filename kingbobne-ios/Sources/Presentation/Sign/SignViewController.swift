@@ -41,7 +41,7 @@ class SignViewController: UIViewController {
     }
     
     @IBAction func onSignUp(_ sender: Any) {
-        guard let signUpVC = UIStoryboard(name: "SignUp", bundle: nil).instantiateViewController(withIdentifier: "SignUpViewController") as? SignUpViewController else { return }
+        guard let signUpVC = UIStoryboard(name: "SignUp", bundle: nil).instantiateViewController(withIdentifier: "SignUpViewController") as? EmailValidationViewController else { return }
         self.navigationController?.pushViewController(signUpVC, animated: true)
     }
     

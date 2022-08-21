@@ -69,7 +69,7 @@ extension AuthApi : TargetType {
 
 protocol AuthService: Service {
     func signIn(email: String, password: String) -> Single<AccessToken>
-    func signUp(email: String, password: String, nickname: String) -> Single<AccessToken>
+    func signUp(email: String, password: String, nickname: String) -> Single<CharacterType>
     func validateEmail(email: String) -> Completable
     func requestAuthCode(email: String, type: AuthCodeTypeDto) -> Completable
     func authenticateCode(email: String, code: String, type: AuthCodeTypeDto) -> Completable
@@ -84,7 +84,7 @@ class AuthCompanion {
 
 fileprivate class AuthServiceImpl: AuthService, Networkable {
     
-    var provider: MoyaProvider<AuthApi> = MoyaProvider<AuthApi>()
+    var provider: MoyaProvider<AuthApi> = MoyaProvider<AuthApi>(plugins: [RequestLoggingPlugin()])
  
     func signIn(email: String, password: String) -> Single<AccessToken> {
         return provider.rx.request(.signIn(body: ReqSignIn(email: email, password: password)))
@@ -98,13 +98,15 @@ fileprivate class AuthServiceImpl: AuthService, Networkable {
             }
     }
     
-    func signUp(email: String, password: String, nickname: String) -> Single<AccessToken> {
+    func signUp(email: String, password: String, nickname: String) -> Single<CharacterType> {
         return provider.rx.request(.signUp(body: ReqSignUp(email: email, password: password, nickname: nickname)))
             .flatMap { response in
                 do {
-                    let accessToken = try response.convert()
-                    return Single.just(accessToken)
+                    let respSignUp = try response.map(DataWrapper<RespSignUp>.self)
+                    AccessToken(token: respSignUp.data.token).save()
+                    return Single.just(respSignUp.data.character.convert())
                 } catch {
+                    print(error)
                     return Single.error(error)
                 }
             }
@@ -114,7 +116,6 @@ fileprivate class AuthServiceImpl: AuthService, Networkable {
         return provider.rx.request(.validateEmail(email: email))
             .filterSuccessfulStatusCodes()
             .asCompletable()
-            
     }
     
     func requestAuthCode(email: String, type: AuthCodeTypeDto) -> Completable {
@@ -147,5 +148,15 @@ fileprivate extension Response {
 fileprivate extension RespAccessToken {
     func convert() -> AccessToken {
         return AccessToken(token: accessToken)
+    }
+}
+
+fileprivate extension CharacterTypeDto {
+    func convert() -> CharacterType {
+        switch self {
+        case .BROCCOLI: return CharacterType.BROCCOLI
+        case .CARROT: return CharacterType.CARROT
+        case .GREEN_ONION: return CharacterType.GREEN_ONION
+        }
     }
 }

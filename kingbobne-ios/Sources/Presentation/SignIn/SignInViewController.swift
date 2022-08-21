@@ -226,7 +226,7 @@ final class SignInViewController: BaseKeyboardViewController {
     }
     
     func setUpUI() {
-        titleLabel.font = .setFont(style: .Headlineline1Regular)
+        titleLabel.font = .setFont(style: .Headline1Regular)
         titleLabel.textColor = .Custom.brownGray500
         titleLabel.text = "이메일로 로그인"
         emailTextField.placeholder = "이메일 입력"
