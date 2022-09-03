@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Lv1_보정전_배고플때.png",
+      "filename" : "img_lv1_carrot.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Lv1_보정전_배고플때@2x.png",
+      "filename" : "img_lv1_carrot@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Lv1_보정전_배고플때@3x.png",
+      "filename" : "img_lv1_carrot@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

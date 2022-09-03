@@ -95,9 +95,9 @@ extension CharacterType {
     
     func image() -> UIImage {
         switch self {
-        case .BROCCOLI: return .ic_alarm_44
-        case .CARROT: return .ic_alarm_44
-        case .GREEN_ONION: return .ic_alarm_44
+        case .BROCCOLI: return .img_lv1_brocolli
+        case .CARROT: return .img_lv1_carrot
+        case .GREEN_ONION: return .img_lv1_greenOnion
         }
     }
 }
